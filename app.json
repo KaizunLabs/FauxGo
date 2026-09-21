@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "FauxGo",
+    "slug": "fauxgo",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/images/fauxgo-icon.png",
+    "scheme": "fauxgo",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/images/fauxgo-icon.png",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kaizunlabs.fauxgo"
+    },
+    "android": {
+      "icon": "./assets/images/fauxgo-icon.png",
+      "adaptiveIcon": {
+        "backgroundColor": "#176B47",
+        "foregroundImage": "./assets/images/fauxgo-icon.png"
+      },
+      "predictiveBackGestureEnabled": true,
+      "package": "com.kaizunlabs.fauxgo"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/fauxgo-icon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F6F6F0",
+          "image": "./assets/images/fauxgo-icon.png",
+          "imageWidth": 120,
+          "dark": {
+            "backgroundColor": "#111612"
+          }
+        }
+      ],
+      "@maplibre/maplibre-react-native",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundRecording": false,
+          "enableBackgroundPlayback": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "FauxGo uses your foreground location to set a pickup or delivery point for entertainment simulations. You can choose a place manually instead.",
+          "motionUsagePermission": false,
+          "isIosBackgroundLocationEnabled": false,
+          "isAndroidBackgroundLocationEnabled": false,
+          "isAndroidForegroundServiceEnabled": false,
+          "isAndroidMotionActivityEnabled": false
+        }
+      ],
+      "expo-notifications",
+      "expo-image",
+      "expo-localization",
+      "expo-asset"
+    ],
+    "extra": {
+      "simulationOnly": true,
+      "realWorldTransactionsEnabled": false
+    },
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

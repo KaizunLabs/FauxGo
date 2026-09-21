@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">FauxGo — Everything arrives. Almost.</title>
+  <desc id="desc">The FauxGo mark and product promise on a warm paper background.</desc>
+  <rect width="1200" height="630" fill="#F7F4EE"/>
+  <path fill="#E8E3DC" d="M0 510c186-95 382-108 584-39 206 70 410 62 616-24v183H0V510Z"/>
+  <g transform="translate(112 110) scale(2.4)">
+    <path fill="#E2523E" d="M8 12a6 6 0 0 1 6-6h15.4a8 8 0 0 1 5.7 2.4l14.7 15a6 6 0 0 1 0 8.4l-7.1 7.2-8.5-8.6 5.8-5.8L27.6 12H20v15H8V12Z"/>
+    <path fill="#171716" d="M8 37h12v15h7.6L40 39.4l-5.8-5.8 8.5-8.6 7.1 7.2a6 6 0 0 1 0 8.4l-14.7 15a8 8 0 0 1-5.7 2.4H14a6 6 0 0 1-6-6V37Z"/>
+  </g>
+  <text x="288" y="222" fill="#171716" font-family="Inter, Arial, sans-serif" font-size="116" font-weight="760" letter-spacing="-6">fauxgo</text>
+  <text x="112" y="390" fill="#171716" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="650" letter-spacing="-1.5">Everything arrives. Almost.</text>
+  <text x="112" y="458" fill="#625E59" font-family="Inter, Arial, sans-serif" font-size="30">On-demand experiences, simulated. Nothing is ordered or charged.</text>
+</svg>
