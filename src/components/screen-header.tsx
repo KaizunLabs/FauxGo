@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { spacing } from "@/constants/theme";
 import { useAppTheme } from "@/hooks/use-app-theme";
 import { AppText } from "./app-text";
+import { BrandHomeLink } from "./brand";
 
 export function ScreenHeader({
   title,
@@ -51,6 +52,7 @@ export function ScreenHeader({
           )}
         </View>
       </View>
+      <BrandHomeLink markOnly size={26} />
     </View>
   );
 }

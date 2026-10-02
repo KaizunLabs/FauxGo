@@ -15,15 +15,16 @@
     "android": {
       "icon": "./assets/images/fauxgo-icon.png",
       "adaptiveIcon": {
-        "backgroundColor": "#176B47",
-        "foregroundImage": "./assets/images/fauxgo-icon.png"
+        "backgroundColor": "#C94332",
+        "foregroundImage": "./assets/images/fauxgo-adaptive-foreground.png",
+        "monochromeImage": "./assets/images/fauxgo-monochrome.png"
       },
       "predictiveBackGestureEnabled": true,
       "package": "com.kaizunlabs.fauxgo"
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/fauxgo-icon.png",
+      "favicon": "./assets/images/favicon.png",
       "bundler": "metro"
     },
     "plugins": [
@@ -31,11 +32,12 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#F6F6F0",
-          "image": "./assets/images/fauxgo-icon.png",
+          "backgroundColor": "#FCFBF8",
+          "image": "./assets/images/fauxgo-splash.png",
           "imageWidth": 120,
           "dark": {
-            "backgroundColor": "#111612"
+            "backgroundColor": "#171716",
+            "image": "./assets/images/fauxgo-splash-dark.png"
           }
         }
       ],

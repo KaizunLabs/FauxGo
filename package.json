@@ -48,6 +48,7 @@
     "vitest": "^5.0.0"
   },
   "scripts": {
+    "brand:generate": "node scripts/generate-brand-assets.mjs && prettier --write src/constants/brand.generated.ts",
     "prepare:maps": "node scripts/prepare-map-worker.mjs",
     "photos:fetch": "node scripts/fetch-pexels-assets.mjs",
     "photos:optimize": "node scripts/optimize-photography.mjs",

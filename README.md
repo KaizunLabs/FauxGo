@@ -1,6 +1,8 @@
-# FauxGo
+<img src="assets/brand/fauxgo-horizontal.svg" alt="FauxGo" width="280" />
 
 > All the journey. None of the going.
+
+Made by **Kaizun Labs**.
 
 FauxGo is an open-source, cross-platform entertainment simulator for the familiar rituals of modern on-demand apps. Browse fictional food and groceries, plan imaginary rides and courier trips, choose extravagant made-up air transport, review a pretend total, and watch an accelerated journey unfold.
 

@@ -1,5 +1,9 @@
 # Asset provenance
 
+## Brand artwork
+
+The parallel passage mark and outlined FauxGo wordmark are original SVG artwork, drawn for this product. `assets/brand/fauxgo-mark.svg` and `fauxgo-wordmark.svg` are the editable masters. `npm run brand:generate` produces the app's shared vector paths, monochrome/horizontal variants, native icons and splash images, favicon, Apple touch icon and share artwork. No external font or image generation service is required to reproduce them.
+
 FauxGo ships a local, curated image library. It does not hotlink catalog photography at runtime, scrape restaurant menus, or claim that an illustrative image depicts a real partner business.
 
 ## Sources and credits

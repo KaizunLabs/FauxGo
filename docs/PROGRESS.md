@@ -1,8 +1,19 @@
 # Progress
 
-Updated: 2026-09-20
+Updated: 2026-10-02
 
-## Targeted stabilization pass
+## Identity refresh — 2026-10-02
+
+FauxGo now uses an original parallel-passage symbol and an outlined wordmark. Both editable SVG masters generate the shared UI paths, light/dark splash artwork, platform icons, browser icons, and share artwork. The responsive header and nested-screen mark link back home; onboarding, Home, Settings, and legal pages carry the restrained “Made by Kaizun Labs” credit and named About actions. The browser title identifies FauxGo correctly. Existing simulation disclosures and service behavior remain unchanged.
+
+Identity verification:
+
+- `npm run verify` passes formatting, the React Native JSX text-node audit, TypeScript, lint, 53 tests in ten files, and static web export.
+- All four browser tests pass against the production web export. Branding fits 320, 390, 768, and 1440 px viewports without horizontal overflow; Home links preserve their 44 px targets and work with keyboard activation. Onboarding, About navigation, studio credit, and dark mode are covered.
+- Desktop, mobile, tablet, onboarding, and dark-mode screenshots were visually reviewed. The symbol was also inspected at small icon sizes.
+- iOS and Android Hermes exports pass. Installed launcher icons, native splash rendering, and physical-device behavior still require a fresh native build and device testing; bundling is not that evidence.
+
+## Targeted stabilization pass — 2026-09-20
 
 The approved refoundation remains intact. The Search raw-text crash was reproduced and fixed, and a compiler-backed repository check now rejects equivalent string/number short-circuit children under View-like containers. The desktop rail now genuinely transitions between 176 and 76 px, the content column reclaims the released width, reduced motion is respected, icon-only items retain accessible names, and the persisted preference survives reload.
 
@@ -10,7 +21,7 @@ The local library now includes four original images and 149 curated Pexels impor
 
 Web and native MapLibre adapters preserve validated provider polylines, distance-normalized interpolation, and cached review-to-tracking geometry. Default road fallback is now a labelled dashed approximation with endpoint markers and no moving road vehicle. Air retains illustrative animation. No production routing/geocoding provider is configured or live-verified.
 
-## Verification evidence
+## Stabilization verification evidence — 2026-09-20
 
 - `npm run verify` passes after the final Expo-compatible patch updates: formatting, the React Native JSX text-node audit, TypeScript, lint, 53 tests in ten files, and static web export.
 - `npm run test:e2e` passes both browser tests. Primary and service routes render without the native text overlay; the desktop rail contracts, releases content width, navigates in collapsed mode, persists across reload, expands again, and introduces no horizontal overflow.

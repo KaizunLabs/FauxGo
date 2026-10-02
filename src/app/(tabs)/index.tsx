@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { Pressable, View, useWindowDimensions } from "react-native";
 import { AppText } from "@/components/app-text";
+import { BrandCredit } from "@/components/brand";
 import { Page } from "@/components/page";
 import { CatalogPhoto } from "@/components/catalog-photo";
 import { Chip, ChipRow, MerchantGrid } from "@/components/commerce";
@@ -205,6 +206,7 @@ export default function Home() {
           ))}
         </View>
       )}
+      <BrandCredit />
     </Page>
   );
 }

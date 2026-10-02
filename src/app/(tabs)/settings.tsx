@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Pressable, Switch, View } from "react-native";
 import { AppText } from "@/components/app-text";
 import { Button } from "@/components/button";
+import { Brand, BrandCredit } from "@/components/brand";
 import { ConfirmDialog } from "@/components/confirm-dialog";
 import { Page } from "@/components/page";
 import { Chip, ChipRow } from "@/components/commerce";
@@ -312,10 +313,12 @@ export default function SettingsScreen() {
         title="About FauxGo"
         description="An independent entertainment simulation. No real payment, order, ride or delivery can be created."
       >
+        <Brand compact />
         <AppText variant="caption" color={theme.muted}>
           Version 1.0.0 · Open source · MIT license
         </AppText>
         {[
+          ["about", "About FauxGo"],
           ["privacy", "Privacy"],
           ["terms", "Terms & simulation disclosure"],
           ["licenses", "Open-source licenses"],
@@ -333,6 +336,7 @@ export default function SettingsScreen() {
           />
         ))}
       </Section>
+      <BrandCredit showAbout={false} />
       <ConfirmDialog
         visible={confirm !== null}
         title={

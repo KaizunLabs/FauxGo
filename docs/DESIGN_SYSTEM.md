@@ -6,22 +6,24 @@ FauxGo is a calm consumer mobility product with one quiet absurdity: nothing phy
 
 ## Identity
 
-The previous ribbon mark is unapproved. Explore and render several simple geometric concepts at 16, 24, 32, 64 and 512 px before selecting a new identity. The selected mark must work in monochrome without resembling a pin, bag, car, lightning bolt or an F in a circle. The wordmark uses a compact neutral sans-serif.
+The parallel passage mark consists of two rounded turns around an open center: the suggestion of a journey that never quite connects. Use a single coral fill, or one ink/paper fill in monochrome. The custom outlined wordmark spells **FauxGo**, with consistent geometry across platforms and no font dependency. Three geometric concepts were compared at small sizes before selecting this identity.
 
-Logo masters live in `assets/brand`. SVG is authoritative; generated PNGs exist only for platform launchers and stores. Clear space is one mark-width around the horizontal lockup. At 24 px and below, use the mark alone.
+The authoritative masters are `assets/brand/fauxgo-mark.svg` and `fauxgo-wordmark.svg`. Run `npm run brand:generate` after editing them: all lockups, shared UI paths, launcher/splash images, favicon, Apple touch icon and share artwork derive from those two masters. Use `Brand` and `BrandHomeLink` in the app; do not crop the app icon into a header logo. The wordmark uses the active theme's ink and the mark uses its coral. Keep at least half a mark-width of clear space around standalone lockups. At 24 px and below, and in narrow header slots, use the mark alone with its full accessible name.
+
+Use **Made by Kaizun Labs** in onboarding, the home footer, Settings and About. Logo home links are named **FauxGo home**; the information destination is **About FauxGo**. Keep studio credits quiet and separate from checkout actions.
 
 ## Color
 
 | Token     | Light     | Dark      | Purpose                         |
 | --------- | --------- | --------- | ------------------------------- |
-| Ink       | `#171716` | `#F7F4EE` | Primary text and controls       |
-| Paper     | `#F7F4EE` | `#171716` | App canvas                      |
-| Surface   | `#FFFDFC` | `#232321` | Raised/content surface          |
-| Warm gray | `#E8E3DC` | `#383633` | Dividers and quiet fills        |
-| Coral     | `#E2523E` | `#F07160` | Primary action and active state |
+| Ink       | `#20201F` | `#F5F2ED` | Primary text and controls       |
+| Paper     | `#FCFBF8` | `#171716` | App canvas                      |
+| Surface   | `#FFFFFF` | `#222220` | Raised/content surface          |
+| Warm gray | `#E6E2DD` | `#403D38` | Dividers and quiet fills        |
+| Coral     | `#C94332` | `#F58B79` | Primary action and active state |
 | Success   | `#2F7151` | `#72C69B` | Completed states                |
-| Warning   | `#95651F` | `#E7BB6B` | Degraded or attention states    |
-| Danger    | `#A13C34` | `#F08B81` | Destructive actions             |
+| Warning   | `#A55C14` | `#F1AE67` | Degraded or attention states    |
+| Danger    | `#A33C36` | `#EF9189` | Destructive actions             |
 
 Coral is the only branded accent. Service families use icons and language, not six unrelated colors. Text/background pairs must meet WCAG 2.2 AA contrast.
 

@@ -9,7 +9,7 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import { Brand } from "@/components/brand";
+import { BrandHomeLink } from "@/components/brand";
 import { AppText } from "@/components/app-text";
 import { Icon } from "@/components/icon";
 import { useAppTheme } from "@/hooks/use-app-theme";
@@ -62,7 +62,7 @@ export default function TabsLayout() {
           paddingHorizontal: desktop ? 24 : 16,
           flexDirection: "row",
           alignItems: "center",
-          gap: 20,
+          gap: desktop ? 20 : 12,
           borderBottomWidth: 1,
           borderColor: theme.border,
           backgroundColor: theme.surface,
@@ -80,7 +80,7 @@ export default function TabsLayout() {
             <Icon name="menu" />
           </Pressable>
         )}
-        <Brand compact />
+        <BrandHomeLink compact markOnly={width < 380} />
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Change location"

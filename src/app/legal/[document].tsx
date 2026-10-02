@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import { AppText } from "@/components/app-text";
+import { Brand, BrandCredit } from "@/components/brand";
 import { Page } from "@/components/page";
 import { ScreenHeader } from "@/components/screen-header";
 import { radii, spacing } from "@/constants/theme";
@@ -78,6 +79,10 @@ const documents = {
     updated: "Independent by design",
     sections: [
       [
+        "Made by Kaizun Labs",
+        "FauxGo is a Kaizun Labs product, independently designed and built for the pleasure of an imaginary journey.",
+      ],
+      [
         "A polished little non-event",
         "FauxGo explores the anticipation and choreography of modern on-demand interfaces. The humour lives in doing all that tapping for an outcome everyone knows is imaginary.",
       ],
@@ -102,6 +107,11 @@ export default function LegalScreen() {
   return (
     <Page contentStyle={styles.page}>
       <ScreenHeader title={content.title} subtitle={content.updated} />
+      {content === documents.about && (
+        <View style={{ marginBottom: spacing.xl }}>
+          <Brand />
+        </View>
+      )}
       <View
         style={[
           styles.card,
@@ -115,6 +125,7 @@ export default function LegalScreen() {
           </View>
         ))}
       </View>
+      <BrandCredit showAbout={content !== documents.about} />
     </Page>
   );
 }

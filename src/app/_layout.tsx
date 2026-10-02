@@ -1,15 +1,20 @@
 import "@/global.css";
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
+import Head from "expo-router/head";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { AppStoreProvider, useAppStore } from "@/store/app-store";
 import { useAppTheme } from "@/hooks/use-app-theme";
 import { palette } from "@/constants/theme";
+import { Brand } from "@/components/brand";
 
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
+      <Head>
+        <title>FauxGo — All the journey. None of the going.</title>
+      </Head>
       <AppStoreProvider>
         <Navigation />
       </AppStoreProvider>
@@ -29,8 +34,10 @@ function Navigation() {
           backgroundColor: theme.canvas,
           alignItems: "center",
           justifyContent: "center",
+          gap: 20,
         }}
       >
+        <Brand markOnly size={64} />
         <ActivityIndicator
           color={theme.brand}
           accessibilityLabel="Opening FauxGo"

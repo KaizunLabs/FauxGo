@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title id="title">FauxGo converging route mark</title>
-  <path fill="currentColor" d="M8 12a6 6 0 0 1 6-6h15.4a8 8 0 0 1 5.7 2.4l14.7 15a6 6 0 0 1 0 8.4l-7.1 7.2-8.5-8.6 5.8-5.8L27.6 12H20v15H8V12Zm0 25h12v15h7.6L40 39.4l-5.8-5.8 8.5-8.6 7.1 7.2a6 6 0 0 1 0 8.4l-14.7 15a8 8 0 0 1-5.7 2.4H14a6 6 0 0 1-6-6V37Z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title id="title">FauxGo parallel passage mark</title><path fill="currentColor" d="M8 38V26C8 14.95 16.95 6 28 6H42V18H28C23.58 18 20 21.58 20 26V38Z M56 26V38C56 49.05 47.05 58 36 58H22V46H36C40.42 46 44 42.42 44 38V26Z"/></svg>
