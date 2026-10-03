@@ -6,7 +6,7 @@ Run `npm run verify`. It performs strict TypeScript checking, ESLint, domain tes
 
 ## Web
 
-The repository includes a Netlify static-export configuration and conservative security headers. Before publishing, run the gate in a clean checkout; deploy `dist`; test onboarding, commerce, mobility, history, reset, appearance, keyboard use, and 390/768/1440 px layouts; and add the final public privacy contact and canonical URL.
+The repository includes Vercel and Netlify static-export configurations with conservative security headers. Vercel builds with `npm run build:web` and serves `dist`; the route fallback lets client-side detail links survive a direct load. Before publishing, run the gate in a clean checkout; test onboarding, commerce, mobility, history, reset, appearance, keyboard use, and 390/768/1440 px layouts. Confirm the public privacy contact, hosting disclosure, and canonical URL for the deployed domain.
 
 ## Android and iOS
 

@@ -1,6 +1,6 @@
 # FauxGo privacy policy
 
-Updated September 14, 2026. Release draft; deployment-specific details remain required.
+Updated October 3, 2026.
 
 FauxGo runs without an account. It does not request real payment details, contacts, advertising identifiers, analytics, camera/microphone data, or photo-library content. Optional foreground location is requested only after the user chooses it. There is no background location tracking. Manual places and offline simulations remain available without permission.
 
@@ -10,6 +10,6 @@ There are no real booking, payment, dispatch, advertising or analytics integrati
 
 Native notifications require opt-in and are scheduled on-device without registering push tokens. Journey details may appear on the lock screen. Users can disable notifications and sound in Settings, subject to OS settings. Web uses Activity instead of browser push.
 
-A hosted web copy may produce ordinary access logs at its hosting provider. The maintainer must document that provider, retention period and any jurisdiction-specific disclosures before public deployment.
+The web version is hosted by Vercel. Vercel processes ordinary request information, including IP addresses and technical logs, to deliver the site. Vercel's [Privacy Notice](https://vercel.com/legal/privacy-notice) explains its handling of that information. FauxGo does not add analytics or advertising to the web version.
 
-Before release, the maintainer must replace this paragraph with a monitored privacy contact address and confirm hosting-specific disclosures. Repository issues must not contain personal or sensitive information.
+For privacy questions, contact Kaizun Labs at kaizunlabs.ofc@gmail.com. Repository issues must not contain personal or sensitive information.

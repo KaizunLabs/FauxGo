@@ -10,7 +10,7 @@ import { useAppTheme } from "@/hooks/use-app-theme";
 const documents = {
   privacy: {
     title: "Privacy",
-    updated: "Updated September 14, 2026 · release draft",
+    updated: "Updated October 3, 2026",
     sections: [
       [
         "The short version",
@@ -22,7 +22,7 @@ const documents = {
       ],
       [
         "Network use",
-        "Maps request styles and tiles from OpenFreeMap by default; the provider receives your IP address and the map area viewed. A deployment may configure another map provider. If routing is configured, pickup and destination coordinates are sent to that routing provider. Address search sends the entered query only when you choose Search addresses and a search provider is configured. No booking, payment, dispatch, advertising or analytics requests are made. Hosting providers may receive ordinary access logs.",
+        "Maps request styles and tiles from OpenFreeMap by default; the provider receives your IP address and the map area viewed. A deployment may configure another map provider. If routing is configured, pickup and destination coordinates are sent to that routing provider. Address search sends the entered query only when you choose Search addresses and a search provider is configured. No booking, payment, dispatch, advertising or analytics requests are made. Vercel hosts the web version and processes ordinary request information to deliver it.",
       ],
       [
         "Permissions",
@@ -30,7 +30,7 @@ const documents = {
       ],
       [
         "Children and contact",
-        "FauxGo is general-audience entertainment and is not designed to collect information from children. Before a public release, the project maintainer must add a monitored privacy contact address in the store listing and repository.",
+        "FauxGo is general-audience entertainment and is not designed to collect information from children. For privacy questions, contact Kaizun Labs at kaizunlabs.ofc@gmail.com.",
       ],
     ],
   },

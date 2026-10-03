@@ -1,6 +1,12 @@
 # Progress
 
-Updated: 2026-10-02
+Updated: 2026-10-03
+
+## Vercel web deployment and CI repair — 2026-10-03
+
+GitHub Actions run 36974652942 failed in the JSX text-node audit at `src/components/empty-state.tsx`: an optional string in an `&&` chain could become a raw child of `View`. The conditional now explicitly renders a button or `null`. A fresh `npm ci`, `npm run verify`, all four browser tests against the production web export, and iOS/Android Hermes exports pass locally. Vercel is configured to build the static web export from the repository and serve deep links with conservative response headers. Hosted build and live URL verification are tracked separately from local passes.
+
+The current production-dependency audit reports 21 high and 11 moderate transitive advisories, mainly in the Expo, Metro, and React Native dependency tree. These are unresolved and require a compatible upstream dependency review before claiming a security-cleared native release; no forced SDK upgrade was applied during this deployment task.
 
 ## Identity refresh — 2026-10-02
 

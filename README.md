@@ -35,6 +35,10 @@ npm run web
 
 Run the complete local gate with `npm run verify`. Individual commands are `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build:web`.
 
+## Web deployment
+
+`vercel.json` builds the static Expo web export into `dist`, serves client-side dynamic routes, and applies the same basic security headers as the Netlify configuration. Import this repository into Vercel with `main` as the production branch; no environment variables are required for the offline simulation. The web build does not need a backend or payment integration.
+
 For native development, install the platform toolchain and run `npm run android` or `npm run ios`. iOS builds require macOS/Xcode. Store and signed-device builds require an Expo account and relevant Apple/Google developer credentials.
 
 ## Architecture

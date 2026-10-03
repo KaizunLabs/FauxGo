@@ -34,9 +34,9 @@ export function EmptyState({
       <AppText color={theme.muted} style={styles.copy}>
         {description}
       </AppText>
-      {actionLabel && onAction && (
+      {actionLabel && onAction ? (
         <Button label={actionLabel} onPress={onAction} style={styles.button} />
-      )}
+      ) : null}
     </View>
   );
 }
