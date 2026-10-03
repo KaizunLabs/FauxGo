@@ -20,10 +20,21 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="apple-mobile-web-app-title" content="FauxGo" />
         <meta name="author" content="Kaizun Labs" />
         <meta property="og:site_name" content="FauxGo" />
+        <meta property="og:url" content="https://fauxgo.vercel.app/" />
         <meta
           property="og:title"
           content="FauxGo — All the journey. None of the going."
         />
+        <meta
+          property="og:image"
+          content="https://fauxgo.vercel.app/brand/fauxgo-og.png"
+        />
+        <meta
+          property="og:image:alt"
+          content="FauxGo — All the journey. None of the going."
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://fauxgo.vercel.app/" />
         <link
           rel="icon"
           type="image/svg+xml"
