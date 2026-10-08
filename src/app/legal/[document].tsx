@@ -10,7 +10,7 @@ import { useAppTheme } from "@/hooks/use-app-theme";
 const documents = {
   privacy: {
     title: "Privacy",
-    updated: "Updated October 3, 2026",
+    updated: "Updated October 8, 2026",
     sections: [
       [
         "The short version",
@@ -22,7 +22,7 @@ const documents = {
       ],
       [
         "Network use",
-        "Maps request styles and tiles from OpenFreeMap by default; the provider receives your IP address and the map area viewed. A deployment may configure another map provider. If routing is configured, pickup and destination coordinates are sent to that routing provider. Address search sends the entered query only when you choose Search addresses and a search provider is configured. No booking, payment, dispatch, advertising or analytics requests are made. Vercel hosts the web version and processes ordinary request information to deliver it.",
+        "Maps request styles and tiles from OpenFreeMap by default; the provider receives your IP address and the map area viewed. A deployment may configure another map provider. If routing is configured, selected trip endpoints and a computed fictional operator start point with the selected pickup coordinate are sent to that routing provider for the approach leg. Address search sends the entered query only when you choose Search addresses and a search provider is configured. No booking, payment, dispatch, advertising or analytics requests are made. Vercel hosts the web version and processes ordinary request information to deliver it.",
       ],
       [
         "Permissions",

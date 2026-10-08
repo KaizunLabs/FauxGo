@@ -240,6 +240,16 @@ export const generatedPhotography = {
     sourceId: "pexels:20422123",
     fallbackClass: "food",
   },
+  "food-double-burger": {
+    thumb: require("../../assets/photography/derived/food-double-burger-thumb.webp"),
+    card: require("../../assets/photography/derived/food-double-burger-card.webp"),
+    hero: require("../../assets/photography/derived/food-double-burger-hero.webp"),
+    description:
+      "Close-up of a delicious double cheeseburger with toppings, perfect for fast food lovers.",
+    tags: ["double stack", "burger", "western"],
+    sourceId: "pexels:10922931",
+    fallbackClass: "food",
+  },
   "food-dumplings": {
     thumb: require("../../assets/photography/derived/food-dumplings-thumb.webp"),
     card: require("../../assets/photography/derived/food-dumplings-card.webp"),
@@ -270,6 +280,16 @@ export const generatedPhotography = {
     sourceId: "pexels:35532834",
     fallbackClass: "food",
   },
+  "food-four-cheese-pizza": {
+    thumb: require("../../assets/photography/derived/food-four-cheese-pizza-thumb.webp"),
+    card: require("../../assets/photography/derived/food-four-cheese-pizza-card.webp"),
+    hero: require("../../assets/photography/derived/food-four-cheese-pizza-hero.webp"),
+    description:
+      "Delicious four cheese pizza displayed on a rustic wooden table, perfect for food lovers and culinary enthusiasts.",
+    tags: ["four cheese pizza", "pizza", "italian"],
+    sourceId: "pexels:33592983",
+    fallbackClass: "food",
+  },
   "food-fried-rice": {
     thumb: require("../../assets/photography/derived/food-fried-rice-thumb.webp"),
     card: require("../../assets/photography/derived/food-fried-rice-card.webp"),
@@ -278,6 +298,16 @@ export const generatedPhotography = {
       "A flavorful serving of Indian fried rice with vegetables in a traditional metal bowl, ideal for food enthusiasts.",
     tags: ["fried rice", "rice", "chinese"],
     sourceId: "pexels:32489477",
+    fallbackClass: "food",
+  },
+  "food-fries": {
+    thumb: require("../../assets/photography/derived/food-fries-thumb.webp"),
+    card: require("../../assets/photography/derived/food-fries-card.webp"),
+    hero: require("../../assets/photography/derived/food-fries-hero.webp"),
+    description:
+      "A plate filled with freshly cooked crispy golden French fries. Perfect snack or side dish.",
+    tags: ["fries", "chips", "western"],
+    sourceId: "pexels:31771051",
     fallbackClass: "food",
   },
   "food-fruit-tart": {
@@ -422,6 +452,16 @@ export const generatedPhotography = {
       "Top-down view of an assorted sushi platter with wasabi, ginger, and dipping sauces on a wooden table.",
     tags: ["sushi", "ramen", "japanese"],
     sourceId: "pexels:35559958",
+    fallbackClass: "food",
+  },
+  "food-jeera-rice": {
+    thumb: require("../../assets/photography/derived/food-jeera-rice-thumb.webp"),
+    card: require("../../assets/photography/derived/food-jeera-rice-card.webp"),
+    hero: require("../../assets/photography/derived/food-jeera-rice-hero.webp"),
+    description:
+      "Freshly prepared jeera rice served with chutney, yogurt, and salad.",
+    tags: ["jeera rice", "rice", "indian"],
+    sourceId: "pexels:35267286",
     fallbackClass: "food",
   },
   "food-kathi-roll": {
@@ -609,9 +649,9 @@ export const generatedPhotography = {
     card: require("../../assets/photography/derived/food-paneer-curry-card.webp"),
     hero: require("../../assets/photography/derived/food-paneer-curry-hero.webp"),
     description:
-      "Delicious paneer dish with layered curry and cashew garnish, perfect for Indian cuisine lovers.",
+      "Mouthwatering paneer butter masala garnished with fresh herbs on a white plate.",
     tags: ["paneer curry", "paneer", "curry", "north indian", "vegetarian"],
-    sourceId: "pexels:28674560",
+    sourceId: "pexels:11188417",
     fallbackClass: "food",
   },
   "food-pav-bhaji": {
@@ -622,6 +662,16 @@ export const generatedPhotography = {
       "Close-up of pav bhaji dish served with soft buns in an Indian restaurant setting, showcasing street food culture.",
     tags: ["pav bhaji", "street food", "indian"],
     sourceId: "pexels:34507155",
+    fallbackClass: "food",
+  },
+  "food-pepperoni-pizza": {
+    thumb: require("../../assets/photography/derived/food-pepperoni-pizza-thumb.webp"),
+    card: require("../../assets/photography/derived/food-pepperoni-pizza-card.webp"),
+    hero: require("../../assets/photography/derived/food-pepperoni-pizza-hero.webp"),
+    description:
+      "Top view of a whole pepperoni pizza on a vibrant red background.",
+    tags: ["pepperoni pizza", "pizza", "italian"],
+    sourceId: "pexels:17907817",
     fallbackClass: "food",
   },
   "food-pesto-pasta": {
@@ -692,6 +742,16 @@ export const generatedPhotography = {
       "Appetizing Indian samosas served with cucumber slices and sauce on a white plate.",
     tags: ["samosa", "street food", "indian"],
     sourceId: "pexels:5031949",
+    fallbackClass: "food",
+  },
+  "food-side-salad": {
+    thumb: require("../../assets/photography/derived/food-side-salad-thumb.webp"),
+    card: require("../../assets/photography/derived/food-side-salad-card.webp"),
+    hero: require("../../assets/photography/derived/food-side-salad-hero.webp"),
+    description:
+      "Delicious close-up of a fresh herb salad with asparagus in a white bowl, ideal for culinary blogs.",
+    tags: ["seasonal side salad", "side salad", "salad"],
+    sourceId: "pexels:13788587",
     fallbackClass: "food",
   },
   "food-smoothie": {
@@ -854,6 +914,16 @@ export const generatedPhotography = {
     sourceId: "pexels:28760153",
     fallbackClass: "food",
   },
+  "grocery-almonds": {
+    thumb: require("../../assets/photography/derived/grocery-almonds-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-almonds-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-almonds-hero.webp"),
+    description:
+      "High-quality image of raw almonds displayed in a stainless steel bowl at a market.",
+    tags: ["almonds", "snacks"],
+    sourceId: "pexels:29060409",
+    fallbackClass: "grocery",
+  },
   "grocery-apple-juice": {
     thumb: require("../../assets/photography/derived/grocery-apple-juice-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-apple-juice-card.webp"),
@@ -934,6 +1004,16 @@ export const generatedPhotography = {
     sourceId: "pexels:33565479",
     fallbackClass: "grocery",
   },
+  "grocery-broccoli": {
+    thumb: require("../../assets/photography/derived/grocery-broccoli-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-broccoli-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-broccoli-hero.webp"),
+    description:
+      "Vibrant green broccoli growing in an organic field, showcasing fresh produce.",
+    tags: ["broccoli", "produce"],
+    sourceId: "pexels:17663813",
+    fallbackClass: "grocery",
+  },
   "grocery-butter": {
     thumb: require("../../assets/photography/derived/grocery-butter-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-butter-card.webp"),
@@ -1004,6 +1084,16 @@ export const generatedPhotography = {
     sourceId: "pexels:1359333",
     fallbackClass: "grocery",
   },
+  "grocery-dark-chocolate": {
+    thumb: require("../../assets/photography/derived/grocery-dark-chocolate-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-dark-chocolate-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-dark-chocolate-hero.webp"),
+    description:
+      "Elegant display of dark chocolate bars on a white marble surface. Perfect for dessert lovers.",
+    tags: ["dark chocolate", "chocolate", "snacks"],
+    sourceId: "pexels:6167331",
+    fallbackClass: "grocery",
+  },
   "grocery-dish-soap": {
     thumb: require("../../assets/photography/derived/grocery-dish-soap-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-dish-soap-card.webp"),
@@ -1034,6 +1124,26 @@ export const generatedPhotography = {
     sourceId: "pexels:33653802",
     fallbackClass: "grocery",
   },
+  "grocery-flatbread": {
+    thumb: require("../../assets/photography/derived/grocery-flatbread-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-flatbread-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-flatbread-hero.webp"),
+    description:
+      "Artistic shot of flatbread on a woven placemat with fresh greenery. Warm tones.",
+    tags: ["flatbread", "bakery"],
+    sourceId: "pexels:30666770",
+    fallbackClass: "grocery",
+  },
+  "grocery-flour": {
+    thumb: require("../../assets/photography/derived/grocery-flour-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-flour-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-flour-hero.webp"),
+    description:
+      "Hands adding flour to a bowl for baking preparation in a kitchen.",
+    tags: ["plain flour", "flour", "essentials"],
+    sourceId: "pexels:6061574",
+    fallbackClass: "grocery",
+  },
   "grocery-frozen-berries": {
     thumb: require("../../assets/photography/derived/grocery-frozen-berries-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-frozen-berries-card.webp"),
@@ -1054,6 +1164,26 @@ export const generatedPhotography = {
     sourceId: "pexels:35907860",
     fallbackClass: "grocery",
   },
+  "grocery-greek-yogurt": {
+    thumb: require("../../assets/photography/derived/grocery-greek-yogurt-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-greek-yogurt-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-greek-yogurt-hero.webp"),
+    description:
+      "Top view of a breakfast bowl featuring strawberries, blueberries, and yogurt on a wooden table.",
+    tags: ["greek yogurt", "yogurt", "dairy"],
+    sourceId: "pexels:4397238",
+    fallbackClass: "grocery",
+  },
+  "grocery-ground-coffee": {
+    thumb: require("../../assets/photography/derived/grocery-ground-coffee-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-ground-coffee-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-ground-coffee-hero.webp"),
+    description:
+      "Close-up of fresh coffee beans scattered next to a brewed cup on a wooden surface.",
+    tags: ["ground coffee", "coffee", "beverages"],
+    sourceId: "pexels:7091091",
+    fallbackClass: "grocery",
+  },
   "grocery-hand-cream": {
     thumb: require("../../assets/photography/derived/grocery-hand-cream-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-hand-cream-card.webp"),
@@ -1072,6 +1202,16 @@ export const generatedPhotography = {
       "A person uses hand sanitizer from a dispenser to maintain hygiene in a public area.",
     tags: ["hand wash", "personal care", "grocery"],
     sourceId: "pexels:5779475",
+    fallbackClass: "grocery",
+  },
+  "grocery-herbal-tea": {
+    thumb: require("../../assets/photography/derived/grocery-herbal-tea-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-herbal-tea-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-herbal-tea-hero.webp"),
+    description:
+      "Overhead shot of a cup with a blend of dried herbal tea leaves and flowers.",
+    tags: ["herbal tea", "tea", "beverages"],
+    sourceId: "pexels:1793035",
     fallbackClass: "grocery",
   },
   "grocery-household-assortment": {
@@ -1124,6 +1264,16 @@ export const generatedPhotography = {
     sourceId: "pexels:109277",
     fallbackClass: "grocery",
   },
+  "grocery-lemons": {
+    thumb: require("../../assets/photography/derived/grocery-lemons-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-lemons-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-lemons-hero.webp"),
+    description:
+      "A vibrant pile of fresh yellow lemons at a local market in Tarneit, Australia.",
+    tags: ["lemons", "lemon", "produce"],
+    sourceId: "pexels:39648476",
+    fallbackClass: "grocery",
+  },
   "grocery-lentils": {
     thumb: require("../../assets/photography/derived/grocery-lentils-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-lentils-card.webp"),
@@ -1162,6 +1312,16 @@ export const generatedPhotography = {
       "A vibrant assortment of fresh vegetables and mushrooms arranged in a flat lay.",
     tags: ["mushrooms", "vegetables", "produce", "grocery"],
     sourceId: "pexels:1435904",
+    fallbackClass: "grocery",
+  },
+  "grocery-oat-biscuits": {
+    thumb: require("../../assets/photography/derived/grocery-oat-biscuits-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-oat-biscuits-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-oat-biscuits-hero.webp"),
+    description:
+      "Aerial view of coffee and oat biscuits on a metal tray with blue background.",
+    tags: ["oat biscuits", "biscuits", "snacks"],
+    sourceId: "pexels:28278524",
     fallbackClass: "grocery",
   },
   "grocery-oats": {
@@ -1222,6 +1382,16 @@ export const generatedPhotography = {
       "Close-up of crispy golden french fries served on a plate, perfect for finger food.",
     tags: ["oven chips", "frozen", "grocery"],
     sourceId: "pexels:8272619",
+    fallbackClass: "grocery",
+  },
+  "grocery-paneer": {
+    thumb: require("../../assets/photography/derived/grocery-paneer-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-paneer-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-paneer-hero.webp"),
+    description:
+      "Top view of fresh feta cheese cubes in a rustic wooden bowl, showcasing clean and minimal food photography.",
+    tags: ["paneer", "dairy"],
+    sourceId: "pexels:19460144",
     fallbackClass: "grocery",
   },
   "grocery-pantry-assortment": {
@@ -1364,6 +1534,16 @@ export const generatedPhotography = {
     sourceId: "pexels:28272104",
     fallbackClass: "grocery",
   },
+  "grocery-spinach": {
+    thumb: require("../../assets/photography/derived/grocery-spinach-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-spinach-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-spinach-hero.webp"),
+    description:
+      "A close-up of fresh spinach leaves in a white bowl, ideal for healthy salads.",
+    tags: ["baby spinach", "spinach", "produce"],
+    sourceId: "pexels:2325843",
+    fallbackClass: "grocery",
+  },
   "grocery-surface-cleaner": {
     thumb: require("../../assets/photography/derived/grocery-surface-cleaner-thumb.webp"),
     card: require("../../assets/photography/derived/grocery-surface-cleaner-card.webp"),
@@ -1412,6 +1592,26 @@ export const generatedPhotography = {
       "Charcoal toothpaste shaped as a heart with bamboo toothbrush on gray background. Ideal for eco-friendly dental care imagery.",
     tags: ["toothpaste", "personal care", "grocery"],
     sourceId: "pexels:15694642",
+    fallbackClass: "grocery",
+  },
+  "grocery-trail-mix": {
+    thumb: require("../../assets/photography/derived/grocery-trail-mix-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-trail-mix-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-trail-mix-hero.webp"),
+    description:
+      "Close-up of assorted nuts and dried fruits creating a colorful, nutritious mix.",
+    tags: ["trail mix", "snacks"],
+    sourceId: "pexels:12955793",
+    fallbackClass: "grocery",
+  },
+  "grocery-wholegrain-bread": {
+    thumb: require("../../assets/photography/derived/grocery-wholegrain-bread-thumb.webp"),
+    card: require("../../assets/photography/derived/grocery-wholegrain-bread-card.webp"),
+    hero: require("../../assets/photography/derived/grocery-wholegrain-bread-hero.webp"),
+    description:
+      "Freshly baked wholegrain bread loaf with sunflower seeds, perfect for breakfast.",
+    tags: ["wholegrain bread", "bakery"],
+    sourceId: "pexels:30665938",
     fallbackClass: "grocery",
   },
   "grocery-yogurt": {

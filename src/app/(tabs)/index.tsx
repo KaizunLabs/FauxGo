@@ -15,8 +15,13 @@ export default function Home() {
   const router = useRouter();
   const { width } = useWindowDimensions();
   const merchants = getMerchants(store.preferences.region);
-  const featured = ["indian", "pizza", "noodles", "produce"].flatMap(
-    (key) => merchants.find((merchant) => merchant.imageKey === key) ?? [],
+  const featured = ["north-indian", "pizza", "japanese", "market"].flatMap(
+    (key) =>
+      merchants.find(
+        (merchant) =>
+          merchant.cuisineId === key &&
+          merchant.imageKey !== "placeholder-neutral",
+      ) ?? [],
   );
   return (
     <Page testID="home-screen">

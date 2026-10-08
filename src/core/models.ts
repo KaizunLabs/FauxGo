@@ -171,6 +171,7 @@ export type Simulation = {
   origin: SavedPlace;
   destination: SavedPlace;
   route: Route;
+  approachRoute?: Route;
   quote: PriceBreakdown;
   stages: TimelineStage[];
   operator: Operator;

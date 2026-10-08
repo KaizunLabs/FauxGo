@@ -12,6 +12,7 @@ import { EmptyState } from "@/components/empty-state";
 import { ConfirmDialog } from "@/components/confirm-dialog";
 import { useAppStore } from "@/store/app-store";
 import { useAppTheme } from "@/hooks/use-app-theme";
+import { neutralPhotoId } from "@/core/photo-resolver";
 export default function ItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const item = getCatalogItem(id);
@@ -69,16 +70,18 @@ export default function ItemScreen() {
   return (
     <Page testID="item-screen" contentStyle={{ maxWidth: 780 }}>
       <ScreenHeader title={merchant.name} />
-      <CatalogPhoto
-        imageKey={item.imageKey}
-        size="hero"
-        style={{
-          width: "100%",
-          height: 290,
-          aspectRatio: undefined,
-          borderRadius: 18,
-        }}
-      />
+      {item.imageKey !== neutralPhotoId && (
+        <CatalogPhoto
+          imageKey={item.imageKey}
+          size="hero"
+          style={{
+            width: "100%",
+            height: 290,
+            aspectRatio: undefined,
+            borderRadius: 18,
+          }}
+        />
+      )}
       <View style={{ marginTop: 24, gap: 12 }}>
         <AppText variant="title">{item.title}</AppText>
         <AppText color={theme.muted}>{item.description}</AppText>

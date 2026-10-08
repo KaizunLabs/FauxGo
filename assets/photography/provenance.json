@@ -1,24 +1,5 @@
 [
   {
-    "assetId": "food-south-indian-breakfast",
-    "source": "pexels",
-    "sourceLabel": "Pexels Photos API",
-    "pexelsPhotoId": 20422130,
-    "photographer": "Jack Baghel",
-    "photographerProfileUrl": "https://www.pexels.com/@jack-baghel-2199968",
-    "pexelsPhotoUrl": "https://www.pexels.com/photo/pizza-on-plate-20422130/",
-    "originalImageUrl": "https://images.pexels.com/photos/20422130/pexels-photo-20422130.jpeg",
-    "importedAt": "2026-09-14T11:43:11.987Z",
-    "tags": [
-      "south indian",
-      "breakfast"
-    ],
-    "usage": "food",
-    "orientation": "landscape",
-    "scope": "generic",
-    "alt": "Delicious South Indian Uttapam served with chutneys and a refreshing drink on a dark background."
-  },
-  {
     "assetId": "food-avocado-toast",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -440,26 +421,6 @@
     "alt": "A beautifully arranged dessert table featuring assorted chocolates and pastries, surrounded by floral decorations."
   },
   {
-    "assetId": "food-indian-snacks-assortment",
-    "source": "pexels",
-    "sourceLabel": "Pexels Photos API",
-    "pexelsPhotoId": 35066805,
-    "photographer": "Milton Das",
-    "photographerProfileUrl": "https://www.pexels.com/@miltonphotography",
-    "pexelsPhotoUrl": "https://www.pexels.com/photo/top-view-of-indian-pakoras-with-ketchup-35066805/",
-    "originalImageUrl": "https://images.pexels.com/photos/35066805/pexels-photo-35066805.jpeg",
-    "importedAt": "2026-09-14T11:43:09.811Z",
-    "tags": [
-      "street food",
-      "chaat",
-      "indian"
-    ],
-    "usage": "food",
-    "orientation": "landscape",
-    "scope": "generic",
-    "alt": "Delicious Indian pakoras served on a plate with ketchup, perfect for snack time."
-  },
-  {
     "assetId": "food-donuts",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -496,6 +457,26 @@
     "usage": "food",
     "orientation": "landscape",
     "alt": "Top view of a traditional South Indian dosa meal with chutneys and sambar."
+  },
+  {
+    "assetId": "food-double-burger",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 10922931,
+    "photographer": "Gonzalo Acuña",
+    "photographerProfileUrl": "https://www.pexels.com/@gonzalo-acuna-166058093",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/close-up-shot-of-a-mouthwatering-burger-10922931/",
+    "originalImageUrl": "https://images.pexels.com/photos/10922931/pexels-photo-10922931.jpeg",
+    "importedAt": "2026-10-08T07:55:12.112Z",
+    "tags": [
+      "double stack",
+      "burger",
+      "western"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Close-up of a delicious double cheeseburger with toppings, perfect for fast food lovers."
   },
   {
     "assetId": "food-dumplings",
@@ -556,6 +537,26 @@
     "alt": "Vibrant Indian fish curry dish garnished with fresh vegetables and spices."
   },
   {
+    "assetId": "food-four-cheese-pizza",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 33592983,
+    "photographer": "Anhelina Vasylyk",
+    "photographerProfileUrl": "https://www.pexels.com/@anhelina-vasylyk-734724285",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/rustic-four-cheese-pizza-on-wooden-table-33592983/",
+    "originalImageUrl": "https://images.pexels.com/photos/33592983/pexels-photo-33592983.jpeg",
+    "importedAt": "2026-10-08T07:55:14.651Z",
+    "tags": [
+      "four cheese pizza",
+      "pizza",
+      "italian"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Delicious four cheese pizza displayed on a rustic wooden table, perfect for food lovers and culinary enthusiasts."
+  },
+  {
     "assetId": "food-fried-rice",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -573,6 +574,26 @@
     "usage": "food",
     "orientation": "landscape",
     "alt": "A flavorful serving of Indian fried rice with vegetables in a traditional metal bowl, ideal for food enthusiasts."
+  },
+  {
+    "assetId": "food-fries",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 31771051,
+    "photographer": "Love Deep",
+    "photographerProfileUrl": "https://www.pexels.com/@lpfstudio023",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/crispy-golden-french-fries-on-plate-31771051/",
+    "originalImageUrl": "https://images.pexels.com/photos/31771051/pexels-photo-31771051.jpeg",
+    "importedAt": "2026-10-08T07:55:11.174Z",
+    "tags": [
+      "fries",
+      "chips",
+      "western"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "A plate filled with freshly cooked crispy golden French fries. Perfect snack or side dish."
   },
   {
     "assetId": "food-fruit-tart",
@@ -778,6 +799,26 @@
     "alt": "A person serving a traditional Indian thali, featuring a variety of dishes, during a festive indoor dinner setup."
   },
   {
+    "assetId": "food-indian-snacks-assortment",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 35066805,
+    "photographer": "Milton Das",
+    "photographerProfileUrl": "https://www.pexels.com/@miltonphotography",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/top-view-of-indian-pakoras-with-ketchup-35066805/",
+    "originalImageUrl": "https://images.pexels.com/photos/35066805/pexels-photo-35066805.jpeg",
+    "importedAt": "2026-09-14T11:43:09.811Z",
+    "tags": [
+      "street food",
+      "chaat",
+      "indian"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "generic",
+    "alt": "Delicious Indian pakoras served on a plate with ketchup, perfect for snack time."
+  },
+  {
     "assetId": "food-jalebi",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -816,6 +857,26 @@
     "orientation": "landscape",
     "scope": "generic",
     "alt": "Top-down view of an assorted sushi platter with wasabi, ginger, and dipping sauces on a wooden table."
+  },
+  {
+    "assetId": "food-jeera-rice",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 35267286,
+    "photographer": "Milton Das",
+    "photographerProfileUrl": "https://www.pexels.com/@miltonphotography",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/delicious-jeera-rice-with-indian-sides-35267286/",
+    "originalImageUrl": "https://images.pexels.com/photos/35267286/pexels-photo-35267286.jpeg",
+    "importedAt": "2026-10-08T07:55:16.050Z",
+    "tags": [
+      "jeera rice",
+      "rice",
+      "indian"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Freshly prepared jeera rice served with chutney, yogurt, and salad."
   },
   {
     "assetId": "food-kathi-roll",
@@ -1164,12 +1225,12 @@
     "assetId": "food-paneer-curry",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
-    "pexelsPhotoId": 28674560,
-    "photographer": "Kunal Lakhotia",
-    "photographerProfileUrl": "https://www.pexels.com/@kunal-lakhotia-781256899",
-    "pexelsPhotoUrl": "https://www.pexels.com/photo/indian-paneer-cashew-curry-in-rich-gravy-28674560/",
-    "originalImageUrl": "https://images.pexels.com/photos/28674560/pexels-photo-28674560.jpeg",
-    "importedAt": "2026-09-14T11:24:44.849Z",
+    "pexelsPhotoId": 11188417,
+    "photographer": "Harish .P",
+    "photographerProfileUrl": "https://www.pexels.com/@harish-p-115809860",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/creamy-dish-in-white-ceramic-plate-11188417/",
+    "originalImageUrl": "https://images.pexels.com/photos/11188417/pexels-photo-11188417.jpeg",
+    "importedAt": "2026-10-08T11:57:07.362Z",
     "tags": [
       "paneer curry",
       "paneer",
@@ -1179,7 +1240,8 @@
     ],
     "usage": "food",
     "orientation": "landscape",
-    "alt": "Delicious paneer dish with layered curry and cashew garnish, perfect for Indian cuisine lovers."
+    "scope": "exact",
+    "alt": "Mouthwatering paneer butter masala garnished with fresh herbs on a white plate."
   },
   {
     "assetId": "food-pav-bhaji",
@@ -1199,6 +1261,26 @@
     "usage": "food",
     "orientation": "landscape",
     "alt": "Close-up of pav bhaji dish served with soft buns in an Indian restaurant setting, showcasing street food culture."
+  },
+  {
+    "assetId": "food-pepperoni-pizza",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 17907817,
+    "photographer": "Ramon Hernandez",
+    "photographerProfileUrl": "https://www.pexels.com/@ramon-hernandez-243129494",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/sliced-pizza-half-and-half-17907817/",
+    "originalImageUrl": "https://images.pexels.com/photos/17907817/pexels-photo-17907817.jpeg",
+    "importedAt": "2026-10-08T07:55:13.671Z",
+    "tags": [
+      "pepperoni pizza",
+      "pizza",
+      "italian"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Top view of a whole pepperoni pizza on a vibrant red background."
   },
   {
     "assetId": "food-pesto-pasta",
@@ -1336,6 +1418,26 @@
     "alt": "Appetizing Indian samosas served with cucumber slices and sauce on a white plate."
   },
   {
+    "assetId": "food-side-salad",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 13788587,
+    "photographer": "Rene Terp",
+    "photographerProfileUrl": "https://www.pexels.com/@reneterp",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/close-up-of-a-herb-salad-13788587/",
+    "originalImageUrl": "https://images.pexels.com/photos/13788587/pexels-photo-13788587.jpeg",
+    "importedAt": "2026-10-08T07:55:18.425Z",
+    "tags": [
+      "seasonal side salad",
+      "side salad",
+      "salad"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Delicious close-up of a fresh herb salad with asparagus in a white bowl, ideal for culinary blogs."
+  },
+  {
     "assetId": "food-smoothie",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -1372,6 +1474,25 @@
     "usage": "food",
     "orientation": "landscape",
     "alt": "A collection of artisan sourdough loaves displayed in a rustic bakery setting."
+  },
+  {
+    "assetId": "food-south-indian-breakfast",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 20422130,
+    "photographer": "Jack Baghel",
+    "photographerProfileUrl": "https://www.pexels.com/@jack-baghel-2199968",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/pizza-on-plate-20422130/",
+    "originalImageUrl": "https://images.pexels.com/photos/20422130/pexels-photo-20422130.jpeg",
+    "importedAt": "2026-09-14T11:43:11.987Z",
+    "tags": [
+      "south indian",
+      "breakfast"
+    ],
+    "usage": "food",
+    "orientation": "landscape",
+    "scope": "generic",
+    "alt": "Delicious South Indian Uttapam served with chutneys and a refreshing drink on a dark background."
   },
   {
     "assetId": "food-stir-fry-noodles",
@@ -1622,6 +1743,25 @@
     "alt": "Appetizing burger with potato wedges served in a cozy restaurant setting, perfect for food lovers."
   },
   {
+    "assetId": "grocery-almonds",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 29060409,
+    "photographer": "Engin Akyurt",
+    "photographerProfileUrl": "https://www.pexels.com/@enginakyurt",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/close-up-of-raw-almonds-in-a-market-bowl-29060409/",
+    "originalImageUrl": "https://images.pexels.com/photos/29060409/pexels-photo-29060409.jpeg",
+    "importedAt": "2026-10-08T07:55:03.502Z",
+    "tags": [
+      "almonds",
+      "snacks"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "High-quality image of raw almonds displayed in a stainless steel bowl at a market."
+  },
+  {
     "assetId": "grocery-apple-juice",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -1781,6 +1921,25 @@
     "alt": "Close-up of fresh artisan bread rolls on a baking tray, perfect for culinary promotions."
   },
   {
+    "assetId": "grocery-broccoli",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 17663813,
+    "photographer": "Wadim Ł.",
+    "photographerProfileUrl": "https://www.pexels.com/@wadimoo",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/close-up-of-a-broccoli-17663813/",
+    "originalImageUrl": "https://images.pexels.com/photos/17663813/pexels-photo-17663813.jpeg",
+    "importedAt": "2026-10-08T07:54:54.206Z",
+    "tags": [
+      "broccoli",
+      "produce"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Vibrant green broccoli growing in an organic field, showcasing fresh produce."
+  },
+  {
     "assetId": "grocery-butter",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -1919,6 +2078,26 @@
     "alt": "A stack of homemade crackers on a wooden plate, perfect for a rustic snack or appetizer."
   },
   {
+    "assetId": "grocery-dark-chocolate",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 6167331,
+    "photographer": "Vie Studio",
+    "photographerProfileUrl": "https://www.pexels.com/@vie-studio",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/chocolate-bars-on-white-background-6167331/",
+    "originalImageUrl": "https://images.pexels.com/photos/6167331/pexels-photo-6167331.jpeg",
+    "importedAt": "2026-10-08T07:57:10.444Z",
+    "tags": [
+      "dark chocolate",
+      "chocolate",
+      "snacks"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Elegant display of dark chocolate bars on a white marble surface. Perfect for dessert lovers."
+  },
+  {
     "assetId": "grocery-dish-soap",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -1977,6 +2156,45 @@
     "alt": "A closeup image of fresh organic eggs in a carton, showcasing their natural colors and textures."
   },
   {
+    "assetId": "grocery-flatbread",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 30666770,
+    "photographer": "Natalia Olivera",
+    "photographerProfileUrl": "https://www.pexels.com/@nataliaolivera",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/rustic-flatbread-on-woven-placemat-with-herbs-30666770/",
+    "originalImageUrl": "https://images.pexels.com/photos/30666770/pexels-photo-30666770.jpeg",
+    "importedAt": "2026-10-08T07:54:59.656Z",
+    "tags": [
+      "flatbread",
+      "bakery"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Artistic shot of flatbread on a woven placemat with fresh greenery. Warm tones."
+  },
+  {
+    "assetId": "grocery-flour",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 6061574,
+    "photographer": "Nicole Michalou",
+    "photographerProfileUrl": "https://www.pexels.com/@nicole-michalou",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/person-adding-flour-into-a-bowl-6061574/",
+    "originalImageUrl": "https://images.pexels.com/photos/6061574/pexels-photo-6061574.jpeg",
+    "importedAt": "2026-10-08T07:55:09.711Z",
+    "tags": [
+      "plain flour",
+      "flour",
+      "essentials"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Hands adding flour to a bowl for baking preparation in a kitchen."
+  },
+  {
     "assetId": "grocery-frozen-berries",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -2015,6 +2233,46 @@
     "alt": "Close-up of a hand holding frozen green peas, showcasing freshness and texture."
   },
   {
+    "assetId": "grocery-greek-yogurt",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 4397238,
+    "photographer": "Antoni Shkraba",
+    "photographerProfileUrl": "https://www.pexels.com/@shkrabaanthony",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/white-ceramic-bowl-with-stainless-steel-spoon-4397238/",
+    "originalImageUrl": "https://images.pexels.com/photos/4397238/pexels-photo-4397238.jpeg",
+    "importedAt": "2026-10-08T07:57:09.442Z",
+    "tags": [
+      "greek yogurt",
+      "yogurt",
+      "dairy"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Top view of a breakfast bowl featuring strawberries, blueberries, and yogurt on a wooden table."
+  },
+  {
+    "assetId": "grocery-ground-coffee",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 7091091,
+    "photographer": "Becca Mitchell",
+    "photographerProfileUrl": "https://www.pexels.com/@becca-mitchell-32568510",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/close-up-shot-of-a-cup-of-coffee-7091091/",
+    "originalImageUrl": "https://images.pexels.com/photos/7091091/pexels-photo-7091091.jpeg",
+    "importedAt": "2026-10-08T07:55:01.282Z",
+    "tags": [
+      "ground coffee",
+      "coffee",
+      "beverages"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Close-up of fresh coffee beans scattered next to a brewed cup on a wooden surface."
+  },
+  {
     "assetId": "grocery-hand-cream",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -2051,6 +2309,26 @@
     "usage": "grocery",
     "orientation": "landscape",
     "alt": "A person uses hand sanitizer from a dispenser to maintain hygiene in a public area."
+  },
+  {
+    "assetId": "grocery-herbal-tea",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 1793035,
+    "photographer": "lil artsy",
+    "photographerProfileUrl": "https://www.pexels.com/@lilartsy",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/white-and-brown-ceramic-bowl-1793035/",
+    "originalImageUrl": "https://images.pexels.com/photos/1793035/pexels-photo-1793035.jpeg",
+    "importedAt": "2026-10-08T07:54:57.158Z",
+    "tags": [
+      "herbal tea",
+      "tea",
+      "beverages"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Overhead shot of a cup with a blend of dried herbal tea leaves and flowers."
   },
   {
     "assetId": "grocery-household-assortment",
@@ -2149,6 +2427,26 @@
     "alt": "An array of fresh vegetables at an outdoor market stall, showcasing green leafy produce."
   },
   {
+    "assetId": "grocery-lemons",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 39648476,
+    "photographer": "Joolsmagools  ®️",
+    "photographerProfileUrl": "https://www.pexels.com/@joolsmagools",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/fresh-lemons-on-display-at-local-market-39648476/",
+    "originalImageUrl": "https://images.pexels.com/photos/39648476/pexels-photo-39648476.jpeg",
+    "importedAt": "2026-10-08T07:54:52.604Z",
+    "tags": [
+      "lemons",
+      "lemon",
+      "produce"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "A vibrant pile of fresh yellow lemons at a local market in Tarneit, Australia."
+  },
+  {
     "assetId": "grocery-lentils",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -2227,6 +2525,26 @@
     "usage": "grocery",
     "orientation": "landscape",
     "alt": "A vibrant assortment of fresh vegetables and mushrooms arranged in a flat lay."
+  },
+  {
+    "assetId": "grocery-oat-biscuits",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 28278524,
+    "photographer": "Nic Wood",
+    "photographerProfileUrl": "https://www.pexels.com/@nic-scrollstoppingphotos",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/a-tray-with-a-spoon-and-a-cookie-on-it-28278524/",
+    "originalImageUrl": "https://images.pexels.com/photos/28278524/pexels-photo-28278524.jpeg",
+    "importedAt": "2026-10-08T07:55:04.987Z",
+    "tags": [
+      "oat biscuits",
+      "biscuits",
+      "snacks"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Aerial view of coffee and oat biscuits on a metal tray with blue background."
   },
   {
     "assetId": "grocery-oats",
@@ -2346,6 +2664,25 @@
     "usage": "grocery",
     "orientation": "landscape",
     "alt": "Close-up of crispy golden french fries served on a plate, perfect for finger food."
+  },
+  {
+    "assetId": "grocery-paneer",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 19460144,
+    "photographer": "Patrick",
+    "photographerProfileUrl": "https://www.pexels.com/@jaralol",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/dairy-food-cubes-on-plate-19460144/",
+    "originalImageUrl": "https://images.pexels.com/photos/19460144/pexels-photo-19460144.jpeg",
+    "importedAt": "2026-10-08T07:54:56.065Z",
+    "tags": [
+      "paneer",
+      "dairy"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Top view of fresh feta cheese cubes in a rustic wooden bowl, showcasing clean and minimal food photography."
   },
   {
     "assetId": "grocery-pantry-assortment",
@@ -2622,6 +2959,26 @@
     "alt": "Sparkling water bottles laid on a vibrant blue surface showcasing freshness and clarity."
   },
   {
+    "assetId": "grocery-spinach",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 2325843,
+    "photographer": "Jacqueline Howell",
+    "photographerProfileUrl": "https://www.pexels.com/@jhowell",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/bowl-of-spinach-2325843/",
+    "originalImageUrl": "https://images.pexels.com/photos/2325843/pexels-photo-2325843.jpeg",
+    "importedAt": "2026-10-08T07:54:51.386Z",
+    "tags": [
+      "baby spinach",
+      "spinach",
+      "produce"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "A close-up of fresh spinach leaves in a white bowl, ideal for healthy salads."
+  },
+  {
     "assetId": "grocery-surface-cleaner",
     "source": "pexels",
     "sourceLabel": "Pexels Photos API",
@@ -2717,6 +3074,44 @@
     "usage": "grocery",
     "orientation": "landscape",
     "alt": "Charcoal toothpaste shaped as a heart with bamboo toothbrush on gray background. Ideal for eco-friendly dental care imagery."
+  },
+  {
+    "assetId": "grocery-trail-mix",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 12955793,
+    "photographer": "Atlantic Ambience",
+    "photographerProfileUrl": "https://www.pexels.com/@freestockpro",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/full-shot-of-various-nuts-12955793/",
+    "originalImageUrl": "https://images.pexels.com/photos/12955793/pexels-photo-12955793.jpeg",
+    "importedAt": "2026-10-08T07:55:06.011Z",
+    "tags": [
+      "trail mix",
+      "snacks"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Close-up of assorted nuts and dried fruits creating a colorful, nutritious mix."
+  },
+  {
+    "assetId": "grocery-wholegrain-bread",
+    "source": "pexels",
+    "sourceLabel": "Pexels Photos API",
+    "pexelsPhotoId": 30665938,
+    "photographer": "Gundula Vogel",
+    "photographerProfileUrl": "https://www.pexels.com/@guvo59",
+    "pexelsPhotoUrl": "https://www.pexels.com/photo/rustic-wholegrain-bread-with-sunflower-seeds-30665938/",
+    "originalImageUrl": "https://images.pexels.com/photos/30665938/pexels-photo-30665938.jpeg",
+    "importedAt": "2026-10-08T07:54:58.450Z",
+    "tags": [
+      "wholegrain bread",
+      "bakery"
+    ],
+    "usage": "grocery",
+    "orientation": "landscape",
+    "scope": "exact",
+    "alt": "Freshly baked wholegrain bread loaf with sunflower seeds, perfect for breakfast."
   },
   {
     "assetId": "grocery-yogurt",

@@ -5,7 +5,8 @@ import { getMerchant, getMenu } from "@/core/catalog";
 import { Page } from "@/components/page";
 import { ScreenHeader } from "@/components/screen-header";
 import { AppText } from "@/components/app-text";
-import { CatalogPhoto } from "@/components/catalog-photo";
+import { CatalogPhoto, CatalogPlaceholder } from "@/components/catalog-photo";
+import { neutralPhotoId } from "@/core/photo-resolver";
 import { BasketBar, Chip, ChipRow, useMoney } from "@/components/commerce";
 import { Icon } from "@/components/icon";
 import { EmptyState } from "@/components/empty-state";
@@ -42,16 +43,29 @@ export default function MerchantScreen() {
   return (
     <Page testID="merchant-screen">
       <ScreenHeader title={merchant.name} subtitle={merchant.category} />
-      <CatalogPhoto
-        imageKey={merchant.imageKey}
-        size="hero"
-        style={{
-          height: width < 640 ? 210 : 310,
-          width: "100%",
-          aspectRatio: undefined,
-          borderRadius: 18,
-        }}
-      />
+      {merchant.imageKey === neutralPhotoId ? (
+        <CatalogPlaceholder
+          title={merchant.name}
+          category={merchant.category}
+          style={{
+            height: width < 640 ? 210 : 310,
+            width: "100%",
+            aspectRatio: undefined,
+            borderRadius: 18,
+          }}
+        />
+      ) : (
+        <CatalogPhoto
+          imageKey={merchant.imageKey}
+          size="hero"
+          style={{
+            height: width < 640 ? 210 : 310,
+            width: "100%",
+            aspectRatio: undefined,
+            borderRadius: 18,
+          }}
+        />
+      )}
       <View
         style={{
           flexDirection: "row",
@@ -157,29 +171,46 @@ export default function MerchantScreen() {
                   </AppText>
                 )}
               </View>
-              <View>
-                <CatalogPhoto
-                  imageKey={item.imageKey}
-                  size="thumb"
-                  style={{
-                    width: width < 430 ? 100 : 130,
-                    height: 110,
-                    borderRadius: 12,
-                  }}
-                />
+              {item.imageKey !== neutralPhotoId ? (
+                <View>
+                  <CatalogPhoto
+                    imageKey={item.imageKey}
+                    size="thumb"
+                    style={{
+                      width: width < 430 ? 100 : 130,
+                      height: 110,
+                      borderRadius: 12,
+                    }}
+                  />
+                  <View
+                    style={{
+                      position: "absolute",
+                      right: 6,
+                      bottom: 6,
+                      padding: 6,
+                      borderRadius: 18,
+                      backgroundColor: theme.surface,
+                    }}
+                  >
+                    <Icon name="plus" size={20} />
+                  </View>
+                </View>
+              ) : (
                 <View
                   style={{
-                    position: "absolute",
-                    right: 6,
-                    bottom: 6,
-                    padding: 6,
+                    alignSelf: "center",
+                    width: 36,
+                    height: 36,
                     borderRadius: 18,
-                    backgroundColor: theme.surface,
+                    borderWidth: 1,
+                    borderColor: theme.border,
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
                   <Icon name="plus" size={20} />
                 </View>
-              </View>
+              )}
             </Pressable>
           ))}
       </View>

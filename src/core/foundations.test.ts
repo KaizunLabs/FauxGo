@@ -5,6 +5,7 @@ import {
   createDemoRoute,
   distanceBetween,
   getRouteMapPresentation,
+  getTrackingLeg,
   interpolateRoute,
 } from "./route";
 import {
@@ -135,15 +136,15 @@ describe("geographic routes", () => {
     ).toEqual([0, 0]);
   });
 
-  it("never presents a moving road vehicle on illustrative fallback geometry", () => {
+  it("labels illustrative geometry while keeping its simulated marker visible", () => {
     const demo = createDemoRoute([77.59, 12.97], [77.62, 13.01]);
     expect(getRouteMapPresentation(demo, "ride")).toEqual({
       approximate: true,
-      showVehicle: false,
+      showVehicle: true,
     });
     expect(getRouteMapPresentation(demo, "eats")).toEqual({
       approximate: true,
-      showVehicle: false,
+      showVehicle: true,
     });
     expect(getRouteMapPresentation(demo, "air")).toEqual({
       approximate: false,
@@ -156,6 +157,49 @@ describe("geographic routes", () => {
 });
 
 describe("timestamp state machine", () => {
+  it("approaches pickup, waits there, then begins the separate journey without a position jump", () => {
+    const ride = build();
+    const assigned = ride.stages.find((stage) => stage.id === "assigned")!;
+    const arrived = ride.stages.find((stage) => stage.id === "arrived")!;
+    const beforeAssignment = getTrackingLeg(
+      ride,
+      deriveSnapshot(ride, 1000),
+      1000,
+    );
+    expect(beforeAssignment.phase).toBe("pickup");
+    expect(beforeAssignment.showVehicle).toBe(false);
+    const midpoint =
+      1000 + ((assigned.offsetSeconds + arrived.offsetSeconds) / 2) * 1000;
+    const approaching = getTrackingLeg(
+      ride,
+      deriveSnapshot(ride, midpoint),
+      midpoint,
+    );
+    expect(approaching.progress).toBeGreaterThan(0);
+    expect(approaching.progress).toBeLessThan(1);
+    const waitingTime = 1_000_000;
+    const waiting = getTrackingLeg(
+      ride,
+      deriveSnapshot(ride, waitingTime),
+      waitingTime,
+    );
+    expect(waiting.phase).toBe("pickup");
+    expect(waiting.progress).toBe(1);
+    const started = startManualJourney(ride, waitingTime);
+    const travelling = getTrackingLeg(
+      started,
+      deriveSnapshot(started, waitingTime),
+      waitingTime,
+    );
+    expect(travelling.phase).toBe("journey");
+    expect(
+      distanceBetween(
+        interpolateRoute(waiting.route, 1).coordinate,
+        interpolateRoute(travelling.route, 0).coordinate,
+      ),
+    ).toBeLessThan(1);
+  });
+
   it("waits indefinitely for manual boarding and resumes from the explicit timestamp", () => {
     const ride = build();
     const waiting = deriveSnapshot(ride, 1_000_000);
@@ -175,7 +219,28 @@ describe("timestamp state machine", () => {
   it("holds delivery movement until pickup and reconciles each milestone once", () => {
     const eats = build("eats");
     expect(deriveSnapshot(eats, 2000).routeProgress).toBe(0);
+    const assigned = eats.stages.find(
+      (stage) => stage.id === "courier-assigned",
+    )!;
+    const restaurant = eats.stages.find(
+      (stage) => stage.id === "at-restaurant",
+    )!;
+    const approachTime =
+      eats.createdAt +
+      ((assigned.offsetSeconds + restaurant.offsetSeconds) / 2) * 1000;
+    const approach = getTrackingLeg(
+      eats,
+      deriveSnapshot(eats, approachTime),
+      approachTime,
+    );
+    expect(approach.phase).toBe("pickup");
+    expect(approach.progress).toBeGreaterThan(0);
     const pickup = eats.stages.find((stage) => stage.id === "picked-up")!;
+    const departureTime = eats.createdAt + pickup.offsetSeconds * 1000;
+    expect(
+      getTrackingLeg(eats, deriveSnapshot(eats, departureTime), departureTime)
+        .phase,
+    ).toBe("journey");
     expect(
       deriveSnapshot(eats, eats.createdAt + pickup.offsetSeconds * 1000 + 1000)
         .routeProgress,

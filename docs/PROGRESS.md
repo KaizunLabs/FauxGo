@@ -1,6 +1,16 @@
 # Progress
 
-Updated: 2026-10-03
+Updated: 2026-10-08
+
+## Catalog, navigation and tracking refinement — 2026-10-08
+
+Reviewed and imported 20 additional Pexels photographs with provenance, replacing an unsuitable paneer image and rejecting four misleading candidates. Menus now use a matching photograph at most once; unpictured products render as text-first rows, and regional merchant cards use distinct imagery or editorial name cards. The 5,424 generated item instances currently use 1,404 high-confidence and 1,414 family photos; 2,606 intentionally have no image. A deterministic menu cache keeps search and item lookup responsive.
+
+Home selection no longer depends on image keys. Desktop navigation defaults to an expanded, labelled rail; collapsed rail and mobile tabs retain visible Home, Search, Activity and Settings labels. The existing coral/ink/paper design language remains intact.
+
+Tracking now has separate approach-to-pickup and journey legs, continuous position interpolation, pickup arrival/waiting states, scripted chat only after assignment, and an explicit ride-start gate. The web and native map adapters animate vehicle updates and update map framing when the active leg changes. An OSRM-compatible provider is still required for road-aligned routes; the default offline route and marker are labelled illustrative, never live GPS. Routing-provider privacy disclosures include the computed fictional approach start point.
+
+Verification: `npm run verify` passed formatting, JSX audit, TypeScript, lint, 55 unit tests and web export; `npm run export:native` produced iOS/Android Hermes bundles; five browser tests passed against the production web export, including a clock-driven pickup-to-ride flow. Desktop/mobile Home, grocery and tracking screenshots were reviewed locally. Native physical-device behavior and a configured road-routing provider remain unverified.
 
 ## Vercel web deployment and CI repair — 2026-10-03
 

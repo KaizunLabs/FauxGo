@@ -14,7 +14,7 @@ export function inferRegion(locale: string | null | undefined): RegionCode {
 export function defaultPreferences(region: RegionCode = "IN"): UserPreference {
   return {
     appearance: "light",
-    sidebarExpanded: false,
+    sidebarExpanded: true,
     units: region === "US" ? "mi" : "km",
     regionSource: "locale",
     preciseLocation: false,
@@ -54,7 +54,7 @@ export function normalizePreferences(
   return {
     ...defaults,
     appearance: member(object.appearance, ["light", "dark", "system"], "light"),
-    sidebarExpanded: object.sidebarExpanded === true,
+    sidebarExpanded: object.sidebarExpanded !== false,
     units: member(object.units, ["km", "mi"], defaults.units),
     regionSource: member(
       object.regionSource,

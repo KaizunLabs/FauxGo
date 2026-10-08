@@ -4,6 +4,41 @@ export type PhotoConfidence = "high" | "family" | "generic" | "placeholder";
 export type PhotoUsage = "food" | "grocery" | "merchant";
 export const neutralPhotoId = "placeholder-neutral";
 
+// A small editorial override list for titles where broad word matching can
+// choose a different product or repeat a category image.
+const curatedItemPhotos: Record<"food" | "grocery", Record<string, string>> = {
+  grocery: {
+    "baby spinach": "grocery-spinach",
+    lemons: "grocery-lemons",
+    broccoli: "grocery-broccoli",
+    "greek yogurt": "grocery-greek-yogurt",
+    paneer: "grocery-paneer",
+    "herbal tea": "grocery-herbal-tea",
+    "wholegrain bread": "grocery-wholegrain-bread",
+    flatbreads: "grocery-flatbread",
+    "ground coffee": "grocery-ground-coffee",
+    "dark chocolate": "grocery-dark-chocolate",
+    "roasted almonds": "grocery-almonds",
+    "oat biscuits": "grocery-oat-biscuits",
+    "trail mix": "grocery-trail-mix",
+    "basmati rice": "grocery-rice",
+    "penne pasta": "grocery-pasta",
+    chickpeas: "grocery-chickpeas",
+    "red lentils": "grocery-lentils",
+    "soft rolls": "grocery-bread-rolls",
+    "rice crackers": "grocery-crackers",
+    "plain flour": "grocery-flour",
+  },
+  food: {
+    "house fries": "food-fries",
+    "double stack": "food-double-burger",
+    "pepperoni pizza": "food-pepperoni-pizza",
+    "four cheese pizza": "food-four-cheese-pizza",
+    "jeera rice": "food-jeera-rice",
+    "seasonal side salad": "food-side-salad",
+  },
+};
+
 const broadTags = new Set([
   "food",
   "grocery",
@@ -209,9 +244,15 @@ export function resolvePhoto(
   tags: readonly string[],
   stableId: string,
   usage: PhotoUsage,
+  excludedIds?: ReadonlySet<string>,
 ): { id?: string; confidence: PhotoConfidence; score: number } {
   const normalizedTags = tags.map(normalize).filter(Boolean);
   const title = normalizedTags[0] ?? "";
+  if (usage !== "merchant") {
+    const curatedId = curatedItemPhotos[usage][title];
+    if (curatedId && !excludedIds?.has(curatedId))
+      return { id: curatedId, confidence: "high", score: 100 };
+  }
   const titleWords = new Set(title.split(" "));
   const requestedCuisines = new Set(
     normalizedTags
@@ -227,20 +268,21 @@ export function resolvePhoto(
   const candidates = photoMetadata
     .filter(
       (photo) =>
-        photo.usage === usage ||
-        (usage === "merchant" && photo.usage === "food") ||
-        (usage === "food" &&
-          photo.usage === "grocery" &&
-          photo.tags.some((tag) =>
-            ["sparkling water", "water", "cola", "juice", "tea"].includes(
-              normalize(tag),
-            ),
-          )) ||
-        (usage === "grocery" &&
-          photo.usage === "food" &&
-          photo.tags.some((tag) =>
-            ["bakery", "croissant", "pastry"].includes(normalize(tag)),
-          )),
+        !excludedIds?.has(photo.id) &&
+        (photo.usage === usage ||
+          (usage === "merchant" && photo.usage === "food") ||
+          (usage === "food" &&
+            photo.usage === "grocery" &&
+            photo.tags.some((tag) =>
+              ["sparkling water", "water", "cola", "juice", "tea"].includes(
+                normalize(tag),
+              ),
+            )) ||
+          (usage === "grocery" &&
+            photo.usage === "food" &&
+            photo.tags.some((tag) =>
+              ["bakery", "croissant", "pastry"].includes(normalize(tag)),
+            ))),
     )
     .map((photo) => {
       const normalizedPhotoTags = photo.tags.map(normalize);
@@ -355,6 +397,7 @@ export function resolvePhotoId(
   tags: readonly string[],
   stableId: string,
   usage: PhotoUsage,
+  excludedIds?: ReadonlySet<string>,
 ) {
-  return resolvePhoto(tags, stableId, usage).id ?? neutralPhotoId;
+  return resolvePhoto(tags, stableId, usage, excludedIds).id ?? neutralPhotoId;
 }

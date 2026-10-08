@@ -169,6 +169,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "food-double-burger",
+    tags: ["double stack", "burger", "western"],
+    usage: "food",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "food-dumplings",
     tags: ["dumplings", "chinese", "asian"],
     usage: "food",
@@ -190,8 +197,22 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "food-four-cheese-pizza",
+    tags: ["four cheese pizza", "pizza", "italian"],
+    usage: "food",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "food-fried-rice",
     tags: ["fried rice", "rice", "chinese"],
+    usage: "food",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "food-fries",
+    tags: ["fries", "chips", "western"],
     usage: "food",
     source: "pexels",
     scope: "exact",
@@ -300,6 +321,13 @@ export const photoMetadata = [
     usage: "food",
     source: "pexels",
     scope: "generic",
+  },
+  {
+    id: "food-jeera-rice",
+    tags: ["jeera rice", "rice", "indian"],
+    usage: "food",
+    source: "pexels",
+    scope: "exact",
   },
   {
     id: "food-kathi-roll",
@@ -442,6 +470,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "food-pepperoni-pizza",
+    tags: ["pepperoni pizza", "pizza", "italian"],
+    usage: "food",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "food-pesto-pasta",
     tags: ["pesto pasta", "pasta", "italian"],
     usage: "food",
@@ -486,6 +521,13 @@ export const photoMetadata = [
   {
     id: "food-samosa",
     tags: ["samosa", "street food", "indian"],
+    usage: "food",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "food-side-salad",
+    tags: ["seasonal side salad", "side salad", "salad"],
     usage: "food",
     source: "pexels",
     scope: "exact",
@@ -603,6 +645,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-almonds",
+    tags: ["almonds", "snacks"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-apple-juice",
     tags: ["apple juice", "juice", "beverages", "grocery"],
     usage: "grocery",
@@ -659,6 +708,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-broccoli",
+    tags: ["broccoli", "produce"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-butter",
     tags: ["butter", "dairy", "grocery"],
     usage: "grocery",
@@ -708,6 +764,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-dark-chocolate",
+    tags: ["dark chocolate", "chocolate", "snacks"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-dish-soap",
     tags: ["dish soap", "household", "cleaning", "grocery"],
     usage: "grocery",
@@ -729,6 +792,20 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-flatbread",
+    tags: ["flatbread", "bakery"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-flour",
+    tags: ["plain flour", "flour", "essentials"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-frozen-berries",
     tags: ["berries", "frozen", "grocery"],
     usage: "grocery",
@@ -743,6 +820,20 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-greek-yogurt",
+    tags: ["greek yogurt", "yogurt", "dairy"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-ground-coffee",
+    tags: ["ground coffee", "coffee", "beverages"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-hand-cream",
     tags: ["hand cream", "personal care", "grocery"],
     usage: "grocery",
@@ -752,6 +843,13 @@ export const photoMetadata = [
   {
     id: "grocery-hand-wash",
     tags: ["hand wash", "personal care", "grocery"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-herbal-tea",
+    tags: ["herbal tea", "tea", "beverages"],
     usage: "grocery",
     source: "pexels",
     scope: "exact",
@@ -792,6 +890,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-lemons",
+    tags: ["lemons", "lemon", "produce"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-lentils",
     tags: ["lentils", "pantry", "essentials", "grocery"],
     usage: "grocery",
@@ -815,6 +920,13 @@ export const photoMetadata = [
   {
     id: "grocery-mushrooms",
     tags: ["mushrooms", "vegetables", "produce", "grocery"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-oat-biscuits",
+    tags: ["oat biscuits", "biscuits", "snacks"],
     usage: "grocery",
     source: "pexels",
     scope: "exact",
@@ -857,6 +969,13 @@ export const photoMetadata = [
   {
     id: "grocery-oven-chips",
     tags: ["oven chips", "frozen", "grocery"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-paneer",
+    tags: ["paneer", "dairy"],
     usage: "grocery",
     source: "pexels",
     scope: "exact",
@@ -960,6 +1079,13 @@ export const photoMetadata = [
     scope: "exact",
   },
   {
+    id: "grocery-spinach",
+    tags: ["baby spinach", "spinach", "produce"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
     id: "grocery-surface-cleaner",
     tags: ["surface cleaner", "household", "cleaning", "grocery"],
     usage: "grocery",
@@ -990,6 +1116,20 @@ export const photoMetadata = [
   {
     id: "grocery-toothpaste",
     tags: ["toothpaste", "personal care", "grocery"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-trail-mix",
+    tags: ["trail mix", "snacks"],
+    usage: "grocery",
+    source: "pexels",
+    scope: "exact",
+  },
+  {
+    id: "grocery-wholegrain-bread",
+    tags: ["wholegrain bread", "bakery"],
     usage: "grocery",
     source: "pexels",
     scope: "exact",

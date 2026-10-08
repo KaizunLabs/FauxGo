@@ -1,6 +1,11 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useState } from "react";
-import { Pressable, View, useWindowDimensions } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  AccessibilityInfo,
+  Pressable,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import { Page } from "@/components/page";
 import { ScreenHeader } from "@/components/screen-header";
 import { AppText } from "@/components/app-text";
@@ -11,7 +16,11 @@ import { EmptyState } from "@/components/empty-state";
 import { ConfirmDialog } from "@/components/confirm-dialog";
 import { MapView } from "@/platform/map-view";
 import { deriveSnapshot } from "@/core/timeline";
-import { getRouteMapPresentation, interpolateRoute } from "@/core/route";
+import {
+  getRouteMapPresentation,
+  getTrackingLeg,
+  interpolateRoute,
+} from "@/core/route";
 import { useClock } from "@/hooks/use-clock";
 import { useAppStore } from "@/store/app-store";
 import { useAppTheme } from "@/hooks/use-app-theme";
@@ -25,6 +34,24 @@ export default function TrackingScreen() {
   const [receipt, setReceipt] = useState(false);
   const [message, setMessage] = useState("");
   const [remove, setRemove] = useState(false);
+  const [systemReducedMotion, setSystemReducedMotion] = useState(false);
+  useEffect(() => {
+    let mounted = true;
+    AccessibilityInfo.isReduceMotionEnabled().then((enabled) => {
+      if (mounted) setSystemReducedMotion(enabled);
+    });
+    const listener = AccessibilityInfo.addEventListener(
+      "reduceMotionChanged",
+      setSystemReducedMotion,
+    );
+    return () => {
+      mounted = false;
+      listener.remove();
+    };
+  }, []);
+  const reducedMotion =
+    store.preferences.reducedMotion === "on" ||
+    (store.preferences.reducedMotion === "system" && systemReducedMotion);
   const simulation = store.simulations.find((item) => item.id === id);
   if (!simulation)
     return (
@@ -40,11 +67,38 @@ export default function TrackingScreen() {
       </Page>
     );
   const snapshot = deriveSnapshot(simulation, now);
-  const point = interpolateRoute(simulation.route, snapshot.routeProgress);
+  const leg = getTrackingLeg(simulation, snapshot, now);
+  const point = interpolateRoute(leg.route, leg.progress);
   const mapPresentation = getRouteMapPresentation(
-    simulation.route,
+    leg.route,
     simulation.serviceType,
   );
+  const assignedStage = simulation.stages.find((stage) =>
+    ["assigned", "courier-assigned"].includes(stage.id),
+  );
+  const operatorAssigned =
+    Boolean(assignedStage) &&
+    now >= simulation.createdAt + assignedStage!.offsetSeconds * 1000;
+  const arrivalStage = simulation.stages.find(
+    (stage) =>
+      stage.id ===
+      (simulation.serviceType === "eats"
+        ? "at-restaurant"
+        : simulation.serviceType === "send"
+          ? "pickup"
+          : simulation.serviceType === "market"
+            ? "picked-up"
+            : "arrived"),
+  );
+  const pickupRemaining = arrivalStage
+    ? Math.max(
+        0,
+        Math.ceil(
+          (simulation.createdAt + arrivalStage.offsetSeconds * 1000 - now) /
+            1000,
+        ),
+      )
+    : 0;
   const anchorStages = simulation.stages.filter(
     (stage) =>
       stage.anchor ===
@@ -57,17 +111,31 @@ export default function TrackingScreen() {
     ),
   );
   const eta = snapshot.awaitingManualStart
-    ? "Ready when you are"
+    ? simulation.serviceType === "ride"
+      ? "Driver at pickup"
+      : simulation.serviceType === "black"
+        ? "Chauffeur at pickup"
+        : "Ready when you are"
     : snapshot.complete
       ? "All done"
-      : remaining < 60
-        ? "Less than a minute"
-        : Math.ceil(remaining / 60) + " min remaining";
+      : leg.phase === "pickup" && operatorAssigned && pickupRemaining > 0
+        ? pickupRemaining < 60
+          ? "Pickup in less than a minute"
+          : `Pickup in ${Math.ceil(pickupRemaining / 60)} min`
+        : leg.phase === "pickup" && operatorAssigned
+          ? "At the pickup point"
+          : remaining < 60
+            ? "Less than a minute"
+            : Math.ceil(remaining / 60) + " min remaining";
   return (
     <Page testID="tracking-screen">
       <ScreenHeader
         title={simulation.title}
-        subtitle={snapshot.complete ? "Completed" : "In progress"}
+        subtitle={
+          snapshot.complete
+            ? "Simulated journey complete"
+            : "Simulation in progress"
+        }
       />
       <View
         style={{ flexDirection: width >= 1024 ? "row" : "column", gap: 24 }}
@@ -75,24 +143,26 @@ export default function TrackingScreen() {
         <View style={{ flex: width >= 1024 ? 1.6 : undefined }}>
           <MapView
             center={simulation.origin.coordinate}
-            route={simulation.route}
+            route={leg.route}
             position={point.coordinate}
             heading={point.heading}
             approximate={mapPresentation.approximate}
-            showVehicle={mapPresentation.showVehicle}
+            showVehicle={mapPresentation.showVehicle && leg.showVehicle}
             height={width >= 1024 ? 620 : 360}
-            reducedMotion={store.preferences.reducedMotion === "on"}
+            reducedMotion={reducedMotion}
           />
-          {mapPresentation.approximate && (
-            <AppText
-              variant="caption"
-              color={theme.muted}
-              style={{ marginTop: 10 }}
-            >
-              Approximate route shown. Vehicle position is hidden because road
-              routing is unavailable offline.
-            </AppText>
-          )}
+          <AppText
+            variant="caption"
+            color={theme.muted}
+            style={{ marginTop: 10 }}
+          >
+            {leg.phase === "pickup" ? "To pickup" : "To destination"} ·{" "}
+            {simulation.serviceType === "air"
+              ? "Illustrative flight path and simulated position; not live GPS."
+              : mapPresentation.approximate
+                ? "Illustrative route and simulated position; not road-aligned."
+                : "Road route with simulated vehicle position; not live GPS."}
+          </AppText>
         </View>
         <View style={{ flex: 1, gap: 20 }}>
           <View accessibilityLiveRegion="polite">
@@ -116,44 +186,52 @@ export default function TrackingScreen() {
               onPress={() => store.startJourney(id)}
             />
           )}
-          <View
-            style={{
-              paddingVertical: 18,
-              borderTopWidth: 1,
-              borderBottomWidth: 1,
-              borderColor: theme.border,
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 14,
-            }}
-          >
+          {operatorAssigned && (
             <View
               style={{
-                backgroundColor: theme.surfaceMuted,
-                width: 52,
-                height: 52,
-                borderRadius: 26,
+                paddingVertical: 18,
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                borderColor: theme.border,
+                flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "center",
+                gap: 14,
               }}
             >
-              <AppText variant="heading">{simulation.operator.name[0]}</AppText>
+              <View
+                style={{
+                  backgroundColor: theme.surfaceMuted,
+                  width: 52,
+                  height: 52,
+                  borderRadius: 26,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <AppText variant="heading">
+                  {simulation.operator.name[0]}
+                </AppText>
+              </View>
+              <View style={{ flex: 1 }}>
+                <AppText variant="bodyStrong">
+                  {simulation.operator.name} ·{" "}
+                  {simulation.operator.rating.toFixed(1)}
+                </AppText>
+                <AppText variant="caption" color={theme.muted}>
+                  {simulation.operator.vehicleColor}{" "}
+                  {simulation.operator.vehicle}
+                </AppText>
+                <AppText variant="caption">{simulation.operator.plate}</AppText>
+              </View>
+              <Icon name={simulation.vehicle.icon} size={36} />
             </View>
-            <View style={{ flex: 1 }}>
-              <AppText variant="bodyStrong">
-                {simulation.operator.name} ·{" "}
-                {simulation.operator.rating.toFixed(1)}
-              </AppText>
-              <AppText variant="caption" color={theme.muted}>
-                {simulation.operator.vehicleColor} {simulation.operator.vehicle}
-              </AppText>
-              <AppText variant="caption">{simulation.operator.plate}</AppText>
-            </View>
-            <Icon name={simulation.vehicle.icon} size={36} />
-          </View>
-          {!snapshot.complete && (
+          )}
+          {operatorAssigned && !snapshot.complete && (
             <View style={{ gap: 8 }}>
               <AppText variant="bodyStrong">Quick messages</AppText>
+              <AppText variant="caption" color={theme.muted}>
+                Scripted replies on this device only. No person is contacted.
+              </AppText>
               <ChipRow>
                 {["I’m here", "Take your time", "Thanks"].map((text) => (
                   <Chip

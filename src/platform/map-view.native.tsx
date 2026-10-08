@@ -12,12 +12,52 @@ import { Icon } from "@/components/icon";
 import { Button } from "@/components/button";
 import { MapFallback } from "./map-fallback";
 import { MapProps, mapStyleURL, routeBounds, routeGeoJSON } from "./map-types";
+import { Coordinate } from "@/core/models";
 export function MapView(props: MapProps) {
   const camera = useRef<CameraRef>(null);
   const [follow, setFollow] = useState(false);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const position = props.position ?? props.center;
+  const [animatedPosition, setAnimatedPosition] =
+    useState<Coordinate>(position);
+  const animatedPositionRef = useRef<Coordinate>(position);
+  const [animatedHeading, setAnimatedHeading] = useState(props.heading ?? 0);
+  const headingRef = useRef(props.heading ?? 0);
+  const previousRouteId = useRef(props.route?.id);
+  useEffect(() => {
+    const from = animatedPositionRef.current;
+    const fromHeading = headingRef.current;
+    const targetHeading = props.heading ?? 0;
+    const turn = ((targetHeading - fromHeading + 540) % 360) - 180;
+    const duration = props.reducedMotion ? 0 : 450;
+    const start = Date.now();
+    let frame: number;
+    const step = () => {
+      const progress = duration
+        ? Math.min(1, (Date.now() - start) / duration)
+        : 1;
+      const next: Coordinate = [
+        from[0] + (position[0] - from[0]) * progress,
+        from[1] + (position[1] - from[1]) * progress,
+      ];
+      animatedPositionRef.current = next;
+      headingRef.current = fromHeading + turn * progress;
+      setAnimatedPosition(next);
+      setAnimatedHeading(headingRef.current);
+      if (progress < 1) frame = requestAnimationFrame(step);
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [position, props.heading, props.reducedMotion]);
+  useEffect(() => {
+    if (!props.route || previousRouteId.current === props.route.id) return;
+    previousRouteId.current = props.route.id;
+    camera.current?.fitBounds(routeBounds(props.route), {
+      padding: { top: 60, bottom: 60, left: 60, right: 60 },
+      duration: props.reducedMotion ? 0 : 600,
+    });
+  }, [props.route, props.reducedMotion]);
   useEffect(() => {
     if (follow)
       camera.current?.easeTo({
@@ -100,13 +140,13 @@ export function MapView(props: MapProps) {
           </>
         )}
         {(props.showVehicle ?? Boolean(props.position)) && (
-          <Marker lngLat={[...position]}>
+          <Marker lngLat={[...animatedPosition]}>
             <View
               style={{
                 backgroundColor: "#20201F",
                 borderRadius: 20,
                 padding: 7,
-                transform: [{ rotate: (props.heading ?? 0) + "deg" }],
+                transform: [{ rotate: animatedHeading + "deg" }],
               }}
             >
               <Icon name="navigation" color="white" size={22} />

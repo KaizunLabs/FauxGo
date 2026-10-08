@@ -10,6 +10,10 @@ export function MapView(props: MapProps) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<GLMap | null>(null);
   const vehicle = useRef<Marker | null>(null);
+  const endpoints = useRef<Marker[]>([]);
+  const routeId = useRef<string | null>(null);
+  const vehicleFrame = useRef<number | null>(null);
+  const vehicleHeading = useRef(0);
   const latest = useRef(props);
   useEffect(() => {
     latest.current = props;
@@ -54,6 +58,7 @@ export function MapView(props: MapProps) {
           const current = latest.current;
           setFailed(false);
           if (current.route) {
+            routeId.current = current.route.id;
             instance.addSource("journey", {
               type: "geojson",
               data: routeGeoJSON(current.route),
@@ -78,15 +83,16 @@ export function MapView(props: MapProps) {
               ],
               { padding: 60, maxZoom: 15, duration: 0 },
             );
-            for (const [index, point] of [
+            endpoints.current = [
               current.route.points[0],
               current.route.points.at(-1)!,
-            ].entries())
+            ].map((point, index) =>
               new gl.Marker({ color: index ? "#C94332" : "#20201F" })
                 .setLngLat([...point])
-                .addTo(instance);
+                .addTo(instance!),
+            );
           }
-          if (!(current.showVehicle ?? Boolean(current.position))) return;
+          if (!current.position) return;
           const element = document.createElement("div");
           element.textContent = "▲";
           element.setAttribute("aria-label", "Vehicle position");
@@ -106,6 +112,9 @@ export function MapView(props: MapProps) {
             .setLngLat([...(current.position ?? current.center)])
             .setRotation(current.heading ?? 0)
             .addTo(instance);
+          vehicleHeading.current = current.heading ?? 0;
+          element.style.display =
+            current.showVehicle === false ? "none" : "grid";
         });
         instance.on("dragstart", () => {
           following.current = false;
@@ -136,6 +145,10 @@ export function MapView(props: MapProps) {
     return () => {
       cancelled = true;
       if (timer) clearTimeout(timer);
+      if (vehicleFrame.current) cancelAnimationFrame(vehicleFrame.current);
+      endpoints.current.forEach((marker) => marker.remove());
+      endpoints.current = [];
+      routeId.current = null;
       vehicle.current = null;
       map.current = null;
       instance?.remove();
@@ -144,27 +157,87 @@ export function MapView(props: MapProps) {
   useEffect(() => {
     const instance = map.current;
     if (!instance?.isStyleLoaded()) return;
-    if (props.showVehicle === false) {
-      vehicle.current?.remove();
-      vehicle.current = null;
-      return;
-    }
+    if (vehicle.current)
+      vehicle.current.getElement().style.display =
+        props.showVehicle === false ? "none" : "grid";
     const point = props.position ?? props.center;
-    vehicle.current?.setLngLat([...point]).setRotation(props.heading ?? 0);
+    if (vehicleFrame.current) cancelAnimationFrame(vehicleFrame.current);
+    const marker = vehicle.current;
+    if (marker) {
+      const from = marker.getLngLat();
+      const headingFrom = vehicleHeading.current;
+      const headingTo = props.heading ?? 0;
+      const headingDelta = ((headingTo - headingFrom + 540) % 360) - 180;
+      const started = performance.now();
+      const duration = props.reducedMotion ? 0 : 450;
+      const step = (time: number) => {
+        const progress = duration
+          ? Math.min(1, (time - started) / duration)
+          : 1;
+        marker
+          .setLngLat([
+            from.lng + (point[0] - from.lng) * progress,
+            from.lat + (point[1] - from.lat) * progress,
+          ])
+          .setRotation(headingFrom + headingDelta * progress);
+        if (progress < 1) vehicleFrame.current = requestAnimationFrame(step);
+        else vehicleHeading.current = headingTo;
+      };
+      vehicleFrame.current = requestAnimationFrame(step);
+    }
     if (following.current)
       instance.easeTo({
         center: [...point],
         duration: props.reducedMotion ? 0 : 500,
       });
-    if (props.route)
+    if (props.route) {
       (instance.getSource("journey") as GeoJSONSource | undefined)?.setData(
         routeGeoJSON(props.route),
       );
+      instance.setPaintProperty(
+        "journey-line",
+        "line-width",
+        props.approximate ? 3 : 5,
+      );
+      instance.setPaintProperty(
+        "journey-line",
+        "line-opacity",
+        props.approximate ? 0.58 : 1,
+      );
+      instance.setPaintProperty(
+        "journey-line",
+        "line-dasharray",
+        props.approximate ? [2, 2] : undefined,
+      );
+      if (routeId.current !== props.route.id) {
+        routeId.current = props.route.id;
+        following.current = false;
+        setFollow(false);
+        endpoints.current.forEach((marker, index) =>
+          marker.setLngLat([
+            ...(index ? props.route!.points.at(-1)! : props.route!.points[0]),
+          ]),
+        );
+        const bounds = routeBounds(props.route);
+        instance.fitBounds(
+          [
+            [bounds[0], bounds[1]],
+            [bounds[2], bounds[3]],
+          ],
+          {
+            padding: 60,
+            maxZoom: 15,
+            duration: props.reducedMotion ? 0 : 600,
+          },
+        );
+      }
+    }
   }, [
     props.position,
     props.center,
     props.heading,
     props.route,
+    props.approximate,
     props.reducedMotion,
     props.showVehicle,
   ]);

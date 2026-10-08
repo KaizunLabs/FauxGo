@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { getMenu, getMerchants } from "../src/core/catalog";
-import { resolvePhoto } from "../src/core/photo-resolver";
+import { neutralPhotoId, resolvePhoto } from "../src/core/photo-resolver";
 import type { PhotoConfidence, PhotoUsage } from "../src/core/photo-resolver";
 import type { RegionCode } from "../src/core/models";
 
@@ -25,34 +25,34 @@ async function main() {
   const placeholderTitles = new Set<string>();
   const uniqueTitles = new Set<string>();
   let catalogItems = 0;
+  let merchantPhotos = 0;
+  let merchantPlaceholders = 0;
 
   for (const region of regions) {
     for (const merchant of getMerchants(region)) {
-      const merchantResolution = resolvePhoto(
-        merchant.imageTags,
-        merchant.id,
-        "merchant",
-      );
-      if (merchantResolution.id)
+      if (merchant.imageKey !== neutralPhotoId) {
+        merchantPhotos += 1;
         (
-          mapped.get(merchantResolution.id) ??
-          mapped
-            .set(merchantResolution.id, new Set())
-            .get(merchantResolution.id)!
+          mapped.get(merchant.imageKey) ??
+          mapped.set(merchant.imageKey, new Set()).get(merchant.imageKey)!
         ).add(`Merchant: ${merchant.category}`);
+      } else merchantPlaceholders += 1;
       for (const item of getMenu(merchant.id)) {
         catalogItems += 1;
         uniqueTitles.add(item.title);
         const usage: PhotoUsage =
           item.serviceType === "market" ? "grocery" : "food";
         const resolution = resolvePhoto(item.imageTags, item.id, usage);
-        counts[resolution.confidence] += 1;
-        if (resolution.confidence === "placeholder")
-          placeholderTitles.add(item.title);
-        if (resolution.id)
+        const confidence =
+          item.imageKey === neutralPhotoId
+            ? "placeholder"
+            : resolution.confidence;
+        counts[confidence] += 1;
+        if (confidence === "placeholder") placeholderTitles.add(item.title);
+        if (item.imageKey !== neutralPhotoId)
           (
-            mapped.get(resolution.id) ??
-            mapped.set(resolution.id, new Set()).get(resolution.id)!
+            mapped.get(item.imageKey) ??
+            mapped.set(item.imageKey, new Set()).get(item.imageKey)!
           ).add(`${item.category}: ${item.title.split("·")[0].trim()}`);
       }
     }
@@ -69,6 +69,8 @@ async function main() {
     uniquePlaceholderTitles: placeholderTitles.size,
     placeholderTitleList: [...placeholderTitles].sort(),
     runtimePhotos: provenance.length,
+    merchantPhotos,
+    merchantPlaceholders,
   };
   await mkdir(outputDirectory, { recursive: true });
   await writeFile(

@@ -64,6 +64,15 @@ export default function CheckoutScreen() {
     destination?.coordinate,
     service?.id !== "air",
   );
+  const approachStart = nearbyOrigin(
+    origin,
+    `approach-${service?.id ?? "service"}`,
+  );
+  const approachRouting = useRoute(
+    approachStart.coordinate,
+    origin.coordinate,
+    service?.id !== "air",
+  );
   const valid =
     service &&
     destination &&
@@ -102,7 +111,12 @@ export default function CheckoutScreen() {
   const selected =
     methods.find((method) => method.id === store.paymentMethodId) ?? methods[0];
   const confirm = () => {
-    if (submitting.current) return;
+    if (
+      submitting.current ||
+      routing.loading ||
+      (service.id !== "air" && approachRouting.loading)
+    )
+      return;
     submitting.current = true;
     setBusy(true);
     setError("");
@@ -122,6 +136,7 @@ export default function CheckoutScreen() {
         vehicleId: vehicle.id,
         quote,
         route,
+        approachRoute: service.id === "air" ? undefined : approachRouting.route,
         itemCount: commerce
           ? store.cart.reduce((sum, line) => sum + line.quantity, 0)
           : undefined,
@@ -245,7 +260,11 @@ export default function CheckoutScreen() {
                   : "Confirm ride"
           }
           onPress={confirm}
-          loading={busy || routing.loading}
+          loading={
+            busy ||
+            routing.loading ||
+            (service.id !== "air" && approachRouting.loading)
+          }
         />
       </View>
     </Page>

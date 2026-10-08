@@ -10,8 +10,24 @@ import {
 } from "./catalog";
 import { cuisines } from "./catalog-seeds";
 import { searchCatalog } from "./search";
+import { neutralPhotoId } from "./photo-resolver";
 
 describe("synthetic catalog", () => {
+  it("does not repeat a photograph within a store, menu, or regional merchant list", () => {
+    for (const region of ["IN", "US", "GB"] as const) {
+      const merchants = getMerchants(region);
+      const merchantPhotos = merchants
+        .map((merchant) => merchant.imageKey)
+        .filter((id) => id !== neutralPhotoId);
+      expect(new Set(merchantPhotos).size).toBe(merchantPhotos.length);
+      for (const merchant of merchants) {
+        const photos = getMenu(merchant.id)
+          .map((item) => item.imageKey)
+          .filter((id) => id !== neutralPhotoId);
+        expect(new Set(photos).size).toBe(photos.length);
+      }
+    }
+  }, 20_000);
   it("provides thousands of deterministic entries with reversible stable IDs", () => {
     expect(
       ["IN", "US", "GB"].reduce(

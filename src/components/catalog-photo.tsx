@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import { photography } from "@/data/photography";
 import { useAppTheme } from "@/hooks/use-app-theme";
+import { AppText } from "./app-text";
 import { Icon } from "./icon";
 
 export function CatalogPhoto({
@@ -46,6 +47,53 @@ export function CatalogPhoto({
       ) : (
         <Icon name="image-outline" size={32} color={theme.muted} />
       )}
+    </View>
+  );
+}
+
+export function CatalogPlaceholder({
+  title,
+  category,
+  style,
+}: {
+  title: string;
+  category: string;
+  style?: StyleProp<ViewStyle>;
+}) {
+  const theme = useAppTheme();
+  return (
+    <View
+      style={[
+        {
+          aspectRatio: 1.5,
+          backgroundColor: theme.surfaceMuted,
+          borderWidth: 1,
+          borderColor: theme.border,
+          overflow: "hidden",
+          padding: 20,
+          justifyContent: "space-between",
+        },
+        style,
+      ]}
+    >
+      <AppText
+        variant="caption"
+        color={theme.muted}
+        style={{ fontWeight: "700", letterSpacing: 1 }}
+      >
+        {category.toUpperCase()}
+      </AppText>
+      <AppText variant="title" numberOfLines={2} style={{ maxWidth: "85%" }}>
+        {title}
+      </AppText>
+      <View
+        style={{
+          width: 32,
+          height: 3,
+          backgroundColor: theme.brand,
+          borderRadius: 2,
+        }}
+      />
     </View>
   );
 }

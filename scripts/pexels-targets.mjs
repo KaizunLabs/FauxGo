@@ -12,7 +12,7 @@ const groups = {
   food: [
     [
       "paneer-curry",
-      "Indian paneer curry restaurant food",
+      "paneer butter masala cubes orange curry bowl",
       ["paneer curry", "paneer", "curry", "north indian", "vegetarian"],
     ],
     [
@@ -734,7 +734,134 @@ const categoryTargets = [
   ),
 ];
 
-export const pexelsTargets = [...exactTargets, ...categoryTargets];
+const catalogGapTargets = [
+  target(
+    "grocery-spinach",
+    "fresh baby spinach leaves",
+    ["baby spinach", "spinach", "produce"],
+    "grocery",
+  ),
+  target(
+    "grocery-lemons",
+    "fresh lemons fruit",
+    ["lemons", "lemon", "produce"],
+    "grocery",
+  ),
+  target(
+    "grocery-broccoli",
+    "fresh broccoli head",
+    ["broccoli", "produce"],
+    "grocery",
+  ),
+  target(
+    "grocery-greek-yogurt",
+    "plain thick yogurt bowl breakfast",
+    ["greek yogurt", "yogurt", "dairy"],
+    "grocery",
+  ),
+  target(
+    "grocery-paneer",
+    "fresh paneer cheese cubes",
+    ["paneer", "dairy"],
+    "grocery",
+  ),
+  target(
+    "grocery-herbal-tea",
+    "herbal tea cup leaves",
+    ["herbal tea", "tea", "beverages"],
+    "grocery",
+  ),
+  target(
+    "grocery-wholegrain-bread",
+    "wholegrain bread loaf",
+    ["wholegrain bread", "bakery"],
+    "grocery",
+  ),
+  target(
+    "grocery-flatbread",
+    "fresh flatbread stack",
+    ["flatbread", "bakery"],
+    "grocery",
+  ),
+  target(
+    "grocery-ground-coffee",
+    "ground coffee beans cup",
+    ["ground coffee", "coffee", "beverages"],
+    "grocery",
+  ),
+  target(
+    "grocery-dark-chocolate",
+    "unwrapped dark chocolate squares plain",
+    ["dark chocolate", "chocolate", "snacks"],
+    "grocery",
+  ),
+  target(
+    "grocery-almonds",
+    "raw almonds bowl",
+    ["almonds", "snacks"],
+    "grocery",
+  ),
+  target(
+    "grocery-oat-biscuits",
+    "oat biscuits cookies",
+    ["oat biscuits", "biscuits", "snacks"],
+    "grocery",
+  ),
+  target(
+    "grocery-trail-mix",
+    "trail mix nuts dried fruit",
+    ["trail mix", "snacks"],
+    "grocery",
+  ),
+  target(
+    "grocery-flour",
+    "plain flour bowl baking",
+    ["plain flour", "flour", "essentials"],
+    "grocery",
+  ),
+  target(
+    "food-fries",
+    "french fries side dish plate",
+    ["fries", "chips", "western"],
+    "food",
+  ),
+  target(
+    "food-double-burger",
+    "double cheeseburger restaurant",
+    ["double stack", "burger", "western"],
+    "food",
+  ),
+  target(
+    "food-pepperoni-pizza",
+    "pepperoni pizza whole restaurant",
+    ["pepperoni pizza", "pizza", "italian"],
+    "food",
+  ),
+  target(
+    "food-four-cheese-pizza",
+    "four cheese pizza restaurant",
+    ["four cheese pizza", "pizza", "italian"],
+    "food",
+  ),
+  target(
+    "food-jeera-rice",
+    "jeera cumin rice indian bowl",
+    ["jeera rice", "rice", "indian"],
+    "food",
+  ),
+  target(
+    "food-side-salad",
+    "seasonal side salad bowl",
+    ["seasonal side salad", "side salad", "salad"],
+    "food",
+  ),
+];
+
+export const pexelsTargets = [
+  ...exactTargets,
+  ...categoryTargets,
+  ...catalogGapTargets,
+];
 
 const ids = new Set(pexelsTargets.map(({ id }) => id));
 if (ids.size !== pexelsTargets.length)

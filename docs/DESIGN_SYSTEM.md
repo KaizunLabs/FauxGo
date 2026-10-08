@@ -35,14 +35,14 @@ Spacing uses a 4-point base: 4, 8, 12, 16, 24, 32, 48. Corner radii are 10, 16, 
 
 ## Responsive behavior
 
-- Under 900 px: four-tab bottom navigation, single-column flows, full-width map/detail stacks.
-- 900 px and wider: a consumer header with brand, location and search, plus a collapsible rail (72 px collapsed / 176 px expanded). Persist rail preference. Use horizontal photographic merchant rows and useful map/detail panels.
+- Under 1024 px: four-tab bottom navigation with visible labels, single-column flows, full-width map/detail stacks.
+- 1024 px and wider: a consumer header with brand, location and search, plus a collapsible rail (90 px collapsed / 196 px expanded). Keep Home, Search, Activity, and Settings labelled in both states; persist rail preference. Use multi-column merchant cards and useful map/detail panels.
 - 1280 px and wider: use available width for content and maps without giant type or excessive empty space.
 - Sheets and dialogs retain explicit labels, keyboard focus, escape/back behavior, and non-map textual alternatives.
 
 ## Motion
 
-Motion explains assignment, stage changes, route progress, sheets, and completion. Prefer opacity and transforms. Respect system reduced motion and the in-app preference. Never animate simply to decorate a static surface.
+Motion explains assignment, stage changes, route progress, sheets, and completion. The vehicle follows a separate pickup leg before the journey leg and rests at pickup until a ride is manually started. Road-aligned geometry requires a configured routing provider; otherwise the route and moving marker are explicitly labelled illustrative. Respect system reduced motion and the in-app preference. Never animate simply to decorate a static surface.
 
 ## Language
 
@@ -50,4 +50,4 @@ Use natural transactional terms: “Order confirmed,” “Your courier,” “D
 
 ## Appearance and imagery
 
-Default to Light even when the OS is dark. Persist Light/Dark/System. Use original generated photography for food, merchants and groceries with neutral image-error placeholders. Utility icons and clean vehicle illustrations may remain SVG. No emoji product artwork. Generate thumbnail, card and hero derivatives from a curated image set.
+Default to Light even when the OS is dark. Persist Light/Dark/System. Use curated photography only when it depicts the product or a close family; do not repeat an image within a menu or regional merchant list. Missing imagery becomes a text-first item row or an editorial merchant card, not a repeated stock photo or a broken-image icon. Utility icons and clean vehicle illustrations may remain SVG. No emoji product artwork. Generate thumbnail, card and hero derivatives from a curated image set.

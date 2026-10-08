@@ -9,8 +9,8 @@ import {
 import { isCurrencyCode, isRegionCode, regions } from "./regions";
 import { validCoordinate } from "./location";
 import { normalizeLocalPreferences, normalizePlace } from "./state";
-import { assignOperator } from "./simulation";
-import { createDemoRoute } from "./route";
+import { assignOperator, nearbyOrigin } from "./simulation";
+import { createDemoRoute, distanceBetween } from "./route";
 import { createTimeline } from "./timeline";
 import { normalizePaymentMethod } from "./payments";
 
@@ -125,6 +125,36 @@ export function normalizeSimulation(value: unknown): Simulation | undefined {
     route.attribution = text(candidateRoute.attribution, 300);
   }
   const stages = createTimeline(serviceType, pace, route.durationSeconds);
+  const approachStart = nearbyOrigin(origin, `approach-${serviceType}`);
+  const approachCandidate = object(entry.approachRoute);
+  const approachRoute = createDemoRoute(
+    approachStart.coordinate,
+    origin.coordinate,
+    `approach-${text(entry.id, 100)}`,
+  );
+  if (
+    Array.isArray(approachCandidate.points) &&
+    approachCandidate.points.length >= 2 &&
+    approachCandidate.points.length <= 10000 &&
+    approachCandidate.points.every(validCoordinate) &&
+    timestamp(approachCandidate.distanceMeters) &&
+    timestamp(approachCandidate.durationSeconds) &&
+    approachCandidate.distanceMeters <= 50_000_000 &&
+    approachCandidate.durationSeconds <= 604800 &&
+    distanceBetween(approachStart.coordinate, approachCandidate.points[0]) <
+      2000 &&
+    distanceBetween(origin.coordinate, approachCandidate.points.at(-1)!) < 2000
+  ) {
+    approachRoute.points = approachCandidate.points.map((point) => [
+      point[0],
+      point[1],
+    ]);
+    approachRoute.distanceMeters = approachCandidate.distanceMeters;
+    approachRoute.durationSeconds = approachCandidate.durationSeconds;
+    approachRoute.source =
+      approachCandidate.source === "provider" ? "provider" : "demo";
+    approachRoute.attribution = text(approachCandidate.attribution, 300);
+  }
   const gate = stages.find((stage) => stage.manualActionLabel);
   const manualStartedAt =
     timestamp(entry.manualStartedAt) &&
@@ -152,6 +182,7 @@ export function normalizeSimulation(value: unknown): Simulation | undefined {
     vehicle,
     quote,
     route,
+    approachRoute: serviceType === "air" ? undefined : approachRoute,
     stages,
     operator: assignOperator(region, serviceType, text(entry.id, 100)),
     itemCount:

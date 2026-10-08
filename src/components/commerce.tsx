@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { AppText } from "./app-text";
-import { CatalogPhoto } from "./catalog-photo";
+import { CatalogPhoto, CatalogPlaceholder } from "./catalog-photo";
 import { Icon } from "./icon";
 import { Button } from "./button";
 import { Merchant, PriceBreakdown } from "@/core/models";
@@ -15,6 +15,7 @@ import { formatMinor } from "@/core/regions";
 import { useAppStore } from "@/store/app-store";
 import { useAppTheme } from "@/hooks/use-app-theme";
 import { convertMinor } from "@/core/preferences";
+import { neutralPhotoId } from "@/core/photo-resolver";
 
 export function useMoney() {
   const { preferences } = useAppStore();
@@ -106,10 +107,18 @@ export function MerchantCard({ merchant }: { merchant: Merchant }) {
       style={({ pressed }) => ({ opacity: pressed ? 0.8 : 1, gap: 8 })}
     >
       <View>
-        <CatalogPhoto
-          imageKey={merchant.imageKey}
-          style={{ borderRadius: 14 }}
-        />
+        {merchant.imageKey === neutralPhotoId ? (
+          <CatalogPlaceholder
+            title={merchant.name}
+            category={merchant.category}
+            style={{ borderRadius: 14 }}
+          />
+        ) : (
+          <CatalogPhoto
+            imageKey={merchant.imageKey}
+            style={{ borderRadius: 14 }}
+          />
+        )}
         {Boolean(merchant.offer) && (
           <View
             style={{

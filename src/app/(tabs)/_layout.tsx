@@ -164,17 +164,21 @@ export default function TabsLayout() {
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarPosition: desktop ? "left" : "bottom",
+          tabBarVariant: desktop ? "material" : "uikit",
           tabBarActiveTintColor: theme.brand,
           tabBarInactiveTintColor: theme.muted,
-          tabBarShowLabel: !desktop || expanded,
+          tabBarShowLabel: true,
+          tabBarLabelPosition:
+            desktop && expanded ? "beside-icon" : "below-icon",
+          tabBarActiveBackgroundColor: theme.brandSoft,
           tabBarStyle: {
             backgroundColor: theme.surface,
             borderColor: theme.border,
             ...(desktop
               ? {
-                  width: expanded ? 176 : 76,
-                  minWidth: expanded ? 176 : 76,
-                  maxWidth: expanded ? 176 : 76,
+                  width: expanded ? 196 : 90,
+                  minWidth: expanded ? 196 : 90,
+                  maxWidth: expanded ? 196 : 90,
                   overflow: "hidden",
                   paddingTop: 20,
                   ...(Platform.OS === "web" && !reducedMotion
@@ -188,9 +192,17 @@ export default function TabsLayout() {
               : { minHeight: 72, paddingTop: 8, paddingBottom: 8 }),
           },
           tabBarItemStyle: desktop
-            ? { maxHeight: 58, marginHorizontal: 8, borderRadius: 12 }
-            : undefined,
-          tabBarLabelStyle: { fontSize: 12, fontWeight: "600" },
+            ? {
+                height: expanded ? 54 : 68,
+                marginHorizontal: 8,
+                marginBottom: 4,
+                borderRadius: 12,
+              }
+            : { borderRadius: 12 },
+          tabBarLabelStyle: {
+            fontSize: desktop && !expanded ? 11 : 12,
+            fontWeight: "700",
+          },
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name={icons[route.name as keyof typeof icons] ?? "circle-outline"}

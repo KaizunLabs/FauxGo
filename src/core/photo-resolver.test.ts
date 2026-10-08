@@ -80,8 +80,8 @@ describe("semantic photography", () => {
         catalogImageTags("Ground coffee · 250 g", "Beverages", "grocery"),
         "coffee",
         "grocery",
-      ),
-    ).toEqual({ confidence: "placeholder", score: 0 });
+      ).id,
+    ).toBe("grocery-ground-coffee");
     expect(
       resolvePhoto(
         catalogImageTags("Sweetcorn · 500 g", "Frozen", "grocery"),
@@ -116,8 +116,8 @@ describe("semantic photography", () => {
         catalogImageTags("Pepperoni pizza", "Pizza", "food"),
         "pepperoni",
         "food",
-      ).confidence,
-    ).toBe("placeholder");
+      ).id,
+    ).toBe("food-pepperoni-pizza");
     expect(
       resolvePhoto(
         catalogImageTags("Tomato burrata salad", "Italian", "food"),

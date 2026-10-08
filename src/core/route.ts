@@ -1,4 +1,5 @@
-import { Coordinate, Route, ServiceType } from "./models";
+import { Coordinate, Route, ServiceType, Simulation } from "./models";
+import type { SimulationSnapshot } from "./timeline";
 
 const EARTH_RADIUS_METERS = 6_371_000;
 const radians = (degrees: number) => (degrees * Math.PI) / 180;
@@ -84,7 +85,62 @@ export function getRouteMapPresentation(
   serviceType: ServiceType,
 ) {
   const approximate = route.source === "demo" && serviceType !== "air";
-  return { approximate, showVehicle: !approximate };
+  return { approximate, showVehicle: true };
+}
+
+const pickupStages: Partial<Record<ServiceType, [string, string, string]>> = {
+  eats: ["courier-assigned", "at-restaurant", "picked-up"],
+  market: ["courier-assigned", "picked-up", "picked-up"],
+  ride: ["assigned", "arrived", "travelling"],
+  black: ["assigned", "arrived", "travelling"],
+  send: ["assigned", "pickup", "collected"],
+};
+
+export function getTrackingLeg(
+  simulation: Simulation,
+  snapshot: SimulationSnapshot,
+  now: number,
+) {
+  const ids = pickupStages[simulation.serviceType];
+  if (!ids || !simulation.approachRoute)
+    return {
+      route: simulation.route,
+      progress: snapshot.routeProgress,
+      phase: "journey" as const,
+      showVehicle: true,
+    };
+  const created = simulation.stages.filter(
+    (stage) => stage.anchor === "created",
+  );
+  const assignment = created.find((stage) => stage.id === ids[0]);
+  const arrival = created.find((stage) => stage.id === ids[1]);
+  const departure = created.find((stage) => stage.id === ids[2]);
+  const elapsed = Math.max(0, (now - simulation.createdAt) / 1000);
+  const journeyStarted =
+    snapshot.complete ||
+    (simulation.serviceType === "ride" || simulation.serviceType === "black"
+      ? simulation.manualStartedAt !== undefined &&
+        simulation.manualStartedAt <= now &&
+        !snapshot.awaitingManualStart
+      : departure !== undefined && elapsed >= departure.offsetSeconds);
+  if (journeyStarted)
+    return {
+      route: simulation.route,
+      progress: snapshot.routeProgress,
+      phase: "journey" as const,
+      showVehicle: true,
+    };
+  const start = assignment?.offsetSeconds ?? 0;
+  const end = arrival?.offsetSeconds ?? start + 1;
+  return {
+    route: simulation.approachRoute,
+    progress: Math.max(
+      0,
+      Math.min(1, (elapsed - start) / Math.max(1, end - start)),
+    ),
+    phase: "pickup" as const,
+    showVehicle: elapsed >= start,
+  };
 }
 
 function interpolateHeading(from: number, to: number, amount: number) {

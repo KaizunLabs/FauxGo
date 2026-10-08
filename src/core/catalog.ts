@@ -8,7 +8,12 @@ import {
 } from "./models";
 import { cuisines, groceryCategories } from "./catalog-seeds";
 import { describeDish, describeGroceryProduct } from "./descriptions";
-import { catalogImageTags, resolvePhotoId } from "./photo-resolver";
+import {
+  catalogImageTags,
+  neutralPhotoId,
+  resolvePhoto,
+  resolvePhotoId,
+} from "./photo-resolver";
 import { deterministicUnit } from "./pricing";
 import { regions } from "./regions";
 
@@ -219,6 +224,7 @@ export const getVehicles = (serviceType: ServiceType, region: RegionCode) =>
   );
 
 const merchantCache = new Map<RegionCode, Merchant[]>();
+const menuCache = new Map<string, CatalogItem[]>();
 const marketNames = [
   "Common Market",
   "Sprig Grocer",
@@ -329,7 +335,48 @@ export function getMerchants(region: RegionCode): Merchant[] {
       priceTier: 1,
     };
   });
-  const result = [...restaurants, ...stores];
+  const usedMerchantPhotos = new Set<string>();
+  const cuisinePhotos = new Map<string, string[]>();
+  const result = [...restaurants, ...stores].map((merchant) => {
+    let imageKey = neutralPhotoId;
+    if (merchant.serviceType === "eats") {
+      let pool = cuisinePhotos.get(merchant.cuisineId);
+      if (!pool) {
+        const cuisine = cuisines.find(
+          (entry) => entry.id === merchant.cuisineId,
+        )!;
+        pool = [
+          ...new Set(
+            cuisine.dishes.flatMap((title) => {
+              const photo = resolvePhoto(
+                catalogImageTags(title, cuisine.title, "food"),
+                `${cuisine.id}-${title}`,
+                "food",
+              );
+              return photo.id && photo.confidence !== "generic"
+                ? [photo.id]
+                : [];
+            }),
+          ),
+        ];
+        cuisinePhotos.set(merchant.cuisineId, pool);
+      }
+      imageKey =
+        pool.find((photo) => !usedMerchantPhotos.has(photo)) ?? neutralPhotoId;
+    } else {
+      imageKey =
+        merchant.id.endsWith("-market-0") && !usedMerchantPhotos.has("produce")
+          ? "produce"
+          : resolvePhotoId(
+              merchant.imageTags,
+              merchant.id,
+              "merchant",
+              usedMerchantPhotos,
+            );
+    }
+    if (imageKey !== neutralPhotoId) usedMerchantPhotos.add(imageKey);
+    return { ...merchant, imageKey };
+  });
   merchantCache.set(region, result);
   return result;
 }
@@ -356,49 +403,71 @@ function dietaryFor(title: string, base: "vegetarian" | "vegan" | "mixed") {
   return base === "vegan" ? ("vegan" as const) : ("vegetarian" as const);
 }
 
+function distinctMenuPhotos(items: CatalogItem[]): CatalogItem[] {
+  const used = new Set<string>();
+  return items.map((item) => {
+    const usage = item.serviceType === "market" ? "grocery" : "food";
+    const photo = resolvePhoto(item.imageTags, item.id, usage);
+    if (!photo.id || photo.confidence === "generic" || used.has(photo.id))
+      return { ...item, imageKey: neutralPhotoId };
+    used.add(photo.id);
+    return { ...item, imageKey: photo.id };
+  });
+}
+
 export function getMenu(merchantId: string): CatalogItem[] {
+  const cached = menuCache.get(merchantId);
+  if (cached) return cached;
   const merchant = getMerchant(merchantId);
   if (!merchant) return [];
   if (merchant.serviceType === "market") {
-    return groceryCategories.flatMap((category, categoryIndex) =>
-      category.products.map((title, index) => {
-        const id = `${merchantId}~${category.id}~${index}`;
-        const imageTags = catalogImageTags(title, category.title, "grocery");
-        return {
-          id,
-          serviceType: "market" as const,
-          merchantId,
-          title,
-          description: describeGroceryProduct(title, category.title, id),
-          category: category.title,
-          priceMinor: prices(55 + categoryIndex * 18 + index * 16, id),
-          available: !(index === 7 && categoryIndex % 3 === 0),
-          popular: index < 2,
-          icon: "basket-outline",
-          imageKey: resolvePhotoId(imageTags, id, "grocery"),
-          imageTags,
-          substitutionIds: [
-            `${merchantId}~${category.id}~${(index + 1) % category.products.length}`,
-          ],
-          optionGroups: [
-            {
-              id: "pack",
-              label: "Pack size",
-              required: true,
-              maximum: 1,
-              options: [
-                { id: "standard", label: "Standard pack", priceDeltaMinor: {} },
-                {
-                  id: "family",
-                  label: "Family pack",
-                  priceDeltaMinor: prices(45 + index * 10, id),
-                },
-              ],
-            },
-          ],
-        };
-      }),
+    const menu = distinctMenuPhotos(
+      groceryCategories.flatMap((category, categoryIndex) =>
+        category.products.map((title, index) => {
+          const id = `${merchantId}~${category.id}~${index}`;
+          const imageTags = catalogImageTags(title, category.title, "grocery");
+          return {
+            id,
+            serviceType: "market" as const,
+            merchantId,
+            title,
+            description: describeGroceryProduct(title, category.title, id),
+            category: category.title,
+            priceMinor: prices(55 + categoryIndex * 18 + index * 16, id),
+            available: !(index === 7 && categoryIndex % 3 === 0),
+            popular: index < 2,
+            icon: "basket-outline",
+            imageKey: neutralPhotoId,
+            imageTags,
+            substitutionIds: [
+              `${merchantId}~${category.id}~${(index + 1) % category.products.length}`,
+            ],
+            optionGroups: [
+              {
+                id: "pack",
+                label: "Pack size",
+                required: true,
+                maximum: 1,
+                options: [
+                  {
+                    id: "standard",
+                    label: "Standard pack",
+                    priceDeltaMinor: {},
+                  },
+                  {
+                    id: "family",
+                    label: "Family pack",
+                    priceDeltaMinor: prices(45 + index * 10, id),
+                  },
+                ],
+              },
+            ],
+          };
+        }),
+      ),
     );
+    menuCache.set(merchantId, menu);
+    return menu;
   }
   const cuisine = cuisines.find(
     (candidate) => candidate.id === merchant.cuisineId,
@@ -419,7 +488,7 @@ export function getMenu(merchantId: string): CatalogItem[] {
       available: index !== 7 || !merchantId.endsWith("-3"),
       popular: index < 3,
       icon: "silverware-fork-knife",
-      imageKey: resolvePhotoId(imageTags, id, "food"),
+      imageKey: neutralPhotoId,
       imageTags,
       optionGroups: [
         {
@@ -463,7 +532,7 @@ export function getMenu(merchantId: string): CatalogItem[] {
     "Seasonal side salad",
     "House dessert",
   ];
-  return [
+  const menu = distinctMenuPhotos([
     ...mains,
     ...sides.map((title, index): CatalogItem => {
       const id = `${merchantId}~side~${index}`;
@@ -479,11 +548,13 @@ export function getMenu(merchantId: string): CatalogItem[] {
         dietary: index === 3 ? "vegetarian" : "vegan",
         available: true,
         icon: "silverware-fork-knife",
-        imageKey: resolvePhotoId(imageTags, id, "food"),
+        imageKey: neutralPhotoId,
         imageTags,
       };
     }),
-  ];
+  ]);
+  menuCache.set(merchantId, menu);
+  return menu;
 }
 
 export function getCatalogItem(id: string | undefined) {

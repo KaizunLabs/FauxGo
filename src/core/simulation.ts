@@ -89,6 +89,7 @@ export function createSimulation(input: {
   vehicleId: string;
   quote: PriceBreakdown;
   route?: Route;
+  approachRoute?: Route;
   now?: number;
   itemCount?: number;
 }): Simulation {
@@ -114,6 +115,16 @@ export function createSimulation(input: {
     origin: input.origin,
     destination: input.destination,
     route,
+    approachRoute:
+      input.serviceType === "air"
+        ? undefined
+        : (input.approachRoute ??
+          createDemoRoute(
+            nearbyOrigin(input.origin, `approach-${input.serviceType}`)
+              .coordinate,
+            input.origin.coordinate,
+            `approach-${input.id}`,
+          )),
     quote: input.quote,
     stages: createTimeline(
       input.serviceType,

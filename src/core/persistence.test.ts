@@ -74,9 +74,19 @@ describe("versioned local persistence", () => {
     const restored = normalizeSimulation({
       ...ride(),
       route: { points: [[NaN, 4]], durationSeconds: Infinity },
+      approachRoute: {
+        source: "provider",
+        points: [
+          [0, 0],
+          [1, 1],
+        ],
+        distanceMeters: 1000,
+        durationSeconds: 300,
+      },
       stages: [{ title: "Injected", offsetSeconds: -1 }],
     })!;
     expect(restored.route.points.length).toBeGreaterThan(2);
+    expect(restored.approachRoute?.source).toBe("demo");
     expect(restored.stages[0].title).toBe("Finding a driver");
   });
   it("preserves old receipts with their original dollar totals", () => {
